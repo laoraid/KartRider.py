@@ -9,4 +9,4 @@ script:
  - flake8 KartRider tests.py
  - pytest tests.py --cov=KartRider
 after_success:
- - codedov
+ - codecov
