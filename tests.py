@@ -21,5 +21,6 @@ def test_api_user(api):
         try:
             assert '1560546859' == api.user(nickname='한글닉네임').accessid
             assert '한글닉네임' == api.user(accessid='1560546859').name
+            api.user(accessid='1560546859', nickname='한글닉네임')
         except KartRider.UnknownStatusCode:
             pytest.skip()
