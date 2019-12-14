@@ -55,7 +55,7 @@ class Api(object):
             raise ValueError
 
         elif nickname is not None and accessid is not None:
-            vnick = self.getIDfromNickname(accessid)
+            vnick = self.getNicknamefromID(accessid)
             if vnick != nickname:
                 raise ValueError
             else:
