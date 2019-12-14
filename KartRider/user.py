@@ -23,6 +23,8 @@ class User(BaseData):
             pass  # TODO : use api get accessid
         return self._accessid
 
-    @property
-    def matches(self):
-        pass  # TODO : get matches class
+
+class MatchUser(User):
+    def __init__(self, api, name, accessid, **kwargs):
+        super(MatchUser, self).__init__(
+            api, name, accessid)  # TODO : kwargs 처리

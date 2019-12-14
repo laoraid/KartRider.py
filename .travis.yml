@@ -7,6 +7,6 @@ install:
 cache: pip
 script:
  - flake8 KartRider tests.py
- - pytest tests.py --cov=KartRider
+ - pytest tests.py -v --cov=KartRider
 after_success:
  - codecov
