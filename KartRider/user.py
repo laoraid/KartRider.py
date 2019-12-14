@@ -1,7 +1,12 @@
-class User(object):
-    def __init__(self, name=None, accessid=None):
-        if name or accessid is None:
+from .basedata import BaseData
+
+
+class User(BaseData):
+    def __init__(self, api, name=None, accessid=None):
+        if name is None and accessid is None:
             raise ValueError
+
+        super(User, self).__init__(api)
 
         self._name = name
         self._accessid = accessid
