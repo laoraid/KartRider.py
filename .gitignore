@@ -133,3 +133,4 @@ dmypy.json
 
 #project ignore
 simpletest.py
+runtest.bat

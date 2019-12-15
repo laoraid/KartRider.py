@@ -2,7 +2,26 @@ from .basedata import BaseData
 
 
 class User(BaseData):
-    def __init__(self, api, name=None, accessid=None):
+    """사용자 정보 클래스
+    User(api, name) -> 닉네임과 api로 User 클래스를 만듭니다.
+    User(api, accessid) -> Accessid로 User 클래스를 만듭니다.
+    User(name, accessid) -> 유효성 검사를 하지 않습니다.
+    name과 accessid가 확실하게 일치할때만 사용하세요.
+    아니라면 대신 Api.user(nickname) 혹은 Api.user(accessid)를 사용하세요.
+
+    api가 None 이고 name, accessid 중 하나만 입력했다면
+    나머지 하나를 호출할때 ValueError가 던져집니다.
+    api가 None 이 아니라면 나머지 하나를 호출할때
+    api를 사용합니다.
+
+    :raises ValueError: name 과 accessid 모두 입력하지 않음
+    :param api: Api 클래스
+    :param name: 카트라이더 닉네임 문자열
+    :param accessid: 카트라이더 내부 유저 id 문자열(계정 id가 아님)
+    """
+
+    def __init__(self, api=None,
+                 name: str = None, accessid: str = None):
         if name is None and accessid is None:
             raise ValueError
 
@@ -12,24 +31,27 @@ class User(BaseData):
         self._accessid = accessid
 
     @property
-    def name(self):
+    def name(self) -> str:
         if self._name is None:
-            pass  # TODO : use api get name
+            if self._api is None:
+                raise ValueError
+            self._name = self._api._getNicknamebyID(self._accessid)
         return self._name
 
     @property
-    def accessid(self):
-        if self._accessid is None:
-            pass  # TODO : use api get accessid
+    def accessid(self) -> str:
+        if self._api is None:
+            raise ValueError
+        self._accessid = self._api._getIDbyNickname(self._name)
         return self._accessid
 
 
-class Player(BaseData):
+class _Player(BaseData):
     def __init__(self, api, name, accessid, **kwargs):
         changeattrs = {'kart': 'kartid',
                        'pet': 'petid', 'flyingPet': 'flyingPetid'}
         ignoreattrs = ['matchRank', 'matchWin', 'matchRetired']
-        super(Player, self).__init__(
+        super(_Player, self).__init__(
             api, None, ignoreattrs, changeattrs, **kwargs)
 
         rank = kwargs['matchRank']

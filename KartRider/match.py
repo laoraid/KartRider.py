@@ -1,9 +1,9 @@
 from .basedata import BaseData
 
 
-class MatchResponse(BaseData):
+class _MatchResponse(BaseData):
     def __init__(self, api, nickname, matches):
-        super(MatchResponse, self).__init__(api)
+        super(_MatchResponse, self).__init__(api)
         self.nickname = nickname
         self.matches = matches
 
@@ -11,9 +11,9 @@ class MatchResponse(BaseData):
         return len(self.matches)
 
 
-class Match(BaseData):
+class _Match(BaseData):
     def __init__(self, api, matchtypeid: str, matches: list):
-        super(Match, self).__init__(api)
+        super(_Match, self).__init__(api)
         self.matchtypeid = matchtypeid
         self.matches = matches
 
@@ -22,16 +22,16 @@ class Match(BaseData):
         raise NotImplementedError  # TODO : Metadata에서 매치 이름 찾아서 반환
 
 
-class MatchInfo(BaseData):
+class _MatchInfo(BaseData):
     def __init__(self, api, **kwargs):
         intattrs = ['playTime', 'playerCount']
         ignoreattrs = ['startTime', 'endTime', 'player']
-        changenameattrs = {'matchtype': 'matchtypeid',
-                           'character': 'characterid',
-                           'playtime': '_playtimesec'}
+        changeattrs = {'matchtype': 'matchtypeid',
+                       'character': 'characterid',
+                       'playtime': '_playtimesec'}
 
-        super(MatchInfo, self).__init__(api, intattrs,
-                                        ignoreattrs, changenameattrs, **kwargs)
+        super(_MatchInfo, self).__init__(api, intattrs,
+                                         ignoreattrs, changeattrs, **kwargs)
 
         _ = {k: v for k, v in kwargs if k in ignoreattrs}
 

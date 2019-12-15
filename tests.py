@@ -14,7 +14,7 @@ def api():
     return KartRider.Api(key)
 
 
-def test_api_user(api):
+def test_api_user(api: KartRider.Api):
     try:
         api.user(None, None)
     except ValueError:
