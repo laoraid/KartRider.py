@@ -30,13 +30,13 @@ class Api(object):
     def _makeapiheader(self):
         return {'Authorization': self.accesstoken}
 
-    def _getresponse(self, url):
+    def _getresponse(self, url: str) -> requests.Response:
         res = requests.get(url, headers=self._makeapiheader())
 
         self._errorstatuscode(res.status_code)
         return res
 
-    def _errorstatuscode(self, code):
+    def _errorstatuscode(self, code: int):
         if code == 200:
             return None
         elif code == 400:
@@ -50,12 +50,12 @@ class Api(object):
         else:
             raise UnknownStatusCode(code)
 
-    def user(self, nickname=None, accessid=None):
+    def user(self, nickname: str = None, accessid: str = None) -> User:
         if nickname is None and accessid is None:
             raise ValueError
 
         elif nickname is not None and accessid is not None:
-            vnick = self.getNicknamefromID(accessid)
+            vnick = self.getNicknamebyID(accessid)
             if vnick != nickname:
                 raise ValueError
             else:
@@ -63,15 +63,43 @@ class Api(object):
 
         else:
             if nickname is None:
-                nickname = self.getNicknamefromID(accessid)
+                nickname = self.getNicknamebyID(accessid)
             else:
-                accessid = self.getIDfromNickname(nickname)
+                accessid = self.getIDbyNickname(nickname)
             return User(self, nickname, accessid)
 
-    def getIDfromNickname(self, nickname):
+    def getIDbyNickname(self, nickname: str) -> str:
         raw = self._getresponse(_API_URL + f'users/nickname/{nickname}').json()
         return raw['accessId']
 
-    def getNicknamefromID(self, accessid):
+    def getNicknamebyID(self, accessid: str) -> str:
         raw = self._getresponse(_API_URL + f'users/{accessid}').json()
         return raw['name']
+
+    def _getMatchlist(self, accessid: str, start_date: str = "",
+                      end_date: str = "", offset: int = 0, limit: int = 10,
+                      match_types: str = "") -> dict:
+        url = _API_URL + (
+            f'users/{accessid}/matches?'
+            f'start_date={start_date}&end_date={end_date}'
+            f'&offset={offset}&limit={limit}&match_types={match_types}')
+
+        raw = self._getresponse(url).json()
+        return raw
+
+    def _getAllmatchlist(self, start_date: str = "", end_date: str = "",
+                         offset: int = 0, limit: int = 10,
+                         match_types: str = "") -> dict:
+        url = _API_URL + (
+            f'matches/all?start_date={start_date}'
+            f'&end_date={end_date}&offset={offset}'
+            f'&limit={limit}&match_types={match_types}'
+        )
+
+        raw = self._getresponse(url).json()
+        return raw
+
+    def _getMatchdetails(self, match_id: str) -> dict:
+        url = _API_URL + f'matches/{match_id}'
+        raw = self._getresponse(url).json()
+        return raw
