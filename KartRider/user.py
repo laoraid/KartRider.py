@@ -24,7 +24,39 @@ class User(BaseData):
         return self._accessid
 
 
-class MatchUser(User):
+class Player(BaseData):
     def __init__(self, api, name, accessid, **kwargs):
-        super(MatchUser, self).__init__(
-            api, name, accessid)  # TODO : kwargs 처리
+        changeattrs = {'kart': 'kartid',
+                       'pet': 'petid', 'flyingPet': 'flyingPetid'}
+        ignoreattrs = ['matchRank', 'matchWin', 'matchRetired']
+        super(Player, self).__init__(
+            api, None, ignoreattrs, changeattrs, **kwargs)
+
+        rank = kwargs['matchRank']
+
+        if rank == '99' or rank == '':
+            self.matchRank = -1
+            self.matchRetired = True
+        elif rank == '1':
+            self.matchRank = 1
+            self.matchRetired = False
+        else:
+            self.matchRank = int(rank)
+            self.matchRetired = False
+
+        if kwargs['matchWin'] == '0':
+            self.matchWin = False
+        else:
+            self.matchWin = True
+
+    @property
+    def kart(self) -> str:
+        pass  # TODO : get metadata name
+
+    @property
+    def pet(self) -> str:
+        pass
+
+    @property
+    def flyingPet(self) -> str:
+        pass
