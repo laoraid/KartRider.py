@@ -3,6 +3,7 @@ import requests
 from .user import User
 from .match import _MatchResponse
 from . import utils
+from . import metadata
 _API_URL = 'https://api.nexon.co.kr/kart/v1.0/'
 
 
@@ -117,15 +118,34 @@ class Api(object):
 
     def getUserMatches(self, id: str, start_date: datetime.datetime = "",
                        end_date: datetime.datetime = "", offset: int = 0,
-                       limit: int = 10, match_types_id: str = ""):
+                       limit: int = 10, match_types=""):
+        """유저의 매치 데이터를 받아오는 메소드입니다.
+        Api.user(...).getMatches(...) 로 사용할 수도 있습니다.
+
+        :param id: 유저의 accessid
+        :param start_date: 조회 시작 날짜(UTC)
+        :param end_date: 조회 끝 날짜(UTC)
+        :param offset: 조회 오프셋
+        :param limit: 조회 수 (최대 500건)
+        :param match_types: 매치 타입 이름 목록 (list 또는 문자열)
+        :return: 유저 매치 데이터 클래스
+        """
         if start_date != '':
             start_date = utils._change_dt_tostr(start_date)
 
         if end_date != '':
             end_date = utils._change_dt_tostr(end_date)
 
+        match_type_ids = [None] * len(match_types)
+
+        for i, name in enumerate(match_types):
+            match_type_ids[i] = metadata._getid('gameType', name)
+
+        match_type_ids = list(match_type_ids)
+        match_type_ids = ','.join(match_type_ids)
+
         raw = self._getMatchlist(
-            id, start_date, end_date, offset, limit, match_types_id)
+            id, start_date, end_date, offset, limit, match_type_ids)
 
         return _MatchResponse(self, raw['nickName'], raw['matches'])
 
