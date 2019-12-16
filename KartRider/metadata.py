@@ -37,7 +37,7 @@ def _get(datatype: str, finddata: str, datavalue: str, dataname: str):
     if result == "":
         return 'Unknown'
 
-    elif result == None:
+    elif result is None:
         raise KeyError(f'id {datavalue} not found.')
 
     return result
