@@ -136,16 +136,19 @@ class Api(object):
         if end_date != '':
             end_date = utils._change_dt_tostr(end_date)
 
-        if type(match_types) is str:
-            match_types = [match_types]
+        if match_types != '':
+            if type(match_types) is str:
+                match_types = [match_types]
 
-        match_type_ids = [None] * len(match_types)
+            match_type_ids = [None] * len(match_types)
 
-        for i, name in enumerate(match_types):
-            match_type_ids[i] = metadata._getid('gameType', name)
+            for i, name in enumerate(match_types):
+                match_type_ids[i] = metadata._getid('gameType', name)
 
-        match_type_ids = list(match_type_ids)
-        match_type_ids = ','.join(match_type_ids)
+            match_type_ids = list(match_type_ids)
+            match_type_ids = ','.join(match_type_ids)
+        else:
+            match_type_ids = ''
 
         raw = self._getMatchlist(
             id, start_date, end_date, offset, limit, match_type_ids)

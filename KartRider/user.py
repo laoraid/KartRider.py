@@ -42,9 +42,10 @@ class User(BaseData):
 
     @property
     def accessid(self) -> str:
-        if self._api is None:
-            raise ValueError('api 가 None 이지만 호출하려 했습니다.')
-        self._accessid = self._api._getIDbyNickname(self._name)
+        if self._accessid is None:
+            if self._api is None:
+                raise ValueError('api 가 None 이지만 호출하려 했습니다.')
+            self._accessid = self._api._getIDbyNickname(self._name)
         return self._accessid
 
     def getMatches(self, start_date: datetime.datetime = "",
@@ -59,7 +60,7 @@ class User(BaseData):
 
 class _Player(BaseData):
     def __init__(self, api, **kwargs):
-        changeattrs = {'kart': 'kartid',
+        changeattrs = {'kart': 'kartid', 'character': 'characterid',
                        'pet': 'petid', 'flyingPet': 'flyingPetid'}
         ignoreattrs = ['matchRank', 'matchWin', 'matchRetired']
         super(_Player, self).__init__(
@@ -93,3 +94,7 @@ class _Player(BaseData):
     @property
     def flyingPet(self) -> str:
         return _getname('flyingpet', self.flyingPetid)
+
+    @property
+    def character(self) -> str:
+        return _getname('character', self.characterid)

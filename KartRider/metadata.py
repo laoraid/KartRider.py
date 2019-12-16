@@ -42,7 +42,7 @@ def _get(datatype: str, finddata: str, datavalue: str, dataname: str):
         if datavalue == item[dataname]:
             result = item[finddata]
 
-    if result == "":
+    if result == '' or datavalue is None:
         return 'Unknown'
 
     elif result is None:

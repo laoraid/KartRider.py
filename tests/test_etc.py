@@ -1,6 +1,7 @@
 import os
 import pytest
 from KartRider import metadata
+from KartRider.user import User
 
 
 metadata.set_metadatapath(os.path.join('tests', 'metadata'))
@@ -23,3 +24,15 @@ def test_exception():
 
     with pytest.raises(KeyError):
         metadata._getid('kart', 'asdwef')
+
+
+def test_user():
+    with pytest.raises(ValueError):
+        User()
+
+    with pytest.raises(ValueError):
+        u = User(name='asd')
+        print(u.accessid)
+        u = User(accessid='asf')
+        print(u.name)
+        u.getMatches()

@@ -54,4 +54,4 @@ class _MatchInfo(BaseData):
 
     @property
     def track(self) -> str:
-        return _getname('track', self.trackid)
+        return _getname('track', self.trackId)

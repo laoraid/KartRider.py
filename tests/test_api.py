@@ -31,6 +31,8 @@ def test_user_match(api: KartRider.Api):
 
     metadata.set_metadatapath(os.path.join('tests', 'metadata'))
 
+    api.getUserMatches('1560546859')
+
     match = api.getUserMatches('1560546859', datetime.datetime(
         2019, 12, 16, 9, 0, 0), datetime.datetime(2019, 12, 16, 23, 0, 0), 2,
         14, match_types='스피드 팀전')
@@ -43,6 +45,10 @@ def test_user_match(api: KartRider.Api):
     d = t.matchesinfo[0]
     assert d.channelName == 'speedTeamFast'
     assert d.character == '황금망토 배찌'
+    assert d.track == '도검 야외 수련관'
 
     p = d.player
+    assert p.character == '황금망토 배찌'
     assert p.kart == '흑기사 X'
+    assert p.pet == '코코 펫'
+    assert p.flyingPet == '플라잉 라이트론'
