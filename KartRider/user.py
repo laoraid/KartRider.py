@@ -1,3 +1,4 @@
+import datetime
 from .basedata import BaseData
 from .metadata import _getname
 
@@ -35,16 +36,25 @@ class User(BaseData):
     def name(self) -> str:
         if self._name is None:
             if self._api is None:
-                raise ValueError
+                raise ValueError('api 가 None 이지만 호출하려 했습니다.')
             self._name = self._api._getNicknamebyID(self._accessid)
         return self._name
 
     @property
     def accessid(self) -> str:
         if self._api is None:
-            raise ValueError
+            raise ValueError('api 가 None 이지만 호출하려 했습니다.')
         self._accessid = self._api._getIDbyNickname(self._name)
         return self._accessid
+
+    def getMatches(self, start_date: datetime.datetime = "",
+                   end_date: datetime.datetime = "", offset: int = 0,
+                   limit: int = 10, match_types=""):
+        if self._api is None:
+            raise ValueError('api 가 None 이지만 호출하려 했습니다.')
+
+        return self._api.getUserMatches(self.accessid, start_date, end_date,
+                                        offset, limit, match_types)
 
 
 class _Player(BaseData):
