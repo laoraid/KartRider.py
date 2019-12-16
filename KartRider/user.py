@@ -93,7 +93,7 @@ class _Player(BaseData):
 
     @property
     def flyingPet(self) -> str:
-        return _getname('flyingpet', self.flyingPetid)
+        return _getname('flyingPet', self.flyingPetid)
 
     @property
     def character(self) -> str:
