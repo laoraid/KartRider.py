@@ -137,7 +137,7 @@ class Api(object):
             end_date = utils._change_dt_tostr(end_date)
 
         if type(match_types) is str:
-            match_types = []
+            match_types = [match_types]
 
         match_type_ids = [None] * len(match_types)
 
