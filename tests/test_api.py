@@ -45,4 +45,3 @@ def test_user_match(api: KartRider.Api):
 
     p = d.player
     assert p.kart == '흑기사 X'
-
