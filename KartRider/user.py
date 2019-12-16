@@ -1,4 +1,5 @@
 from .basedata import BaseData
+from .metadata import _getname
 
 
 class User(BaseData):
@@ -73,12 +74,12 @@ class _Player(BaseData):
 
     @property
     def kart(self) -> str:
-        pass  # TODO : get metadata name
+        return _getname('kart', self.kartid)
 
     @property
     def pet(self) -> str:
-        pass
+        return _getname('pet', self.petid)
 
     @property
     def flyingPet(self) -> str:
-        pass
+        return _getname('flyingpet', self.flyingPetid)

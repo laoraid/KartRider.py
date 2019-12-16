@@ -31,10 +31,6 @@ class _Match(BaseData):
     def matchtype(self) -> str:
         return _getname('gameType', self.matchtypeid)
 
-    @property
-    def track(self) -> str:
-        return _getname('track', self.trackid)
-
 
 class _MatchInfo(BaseData):
     def __init__(self, api, **kwargs):
@@ -55,3 +51,7 @@ class _MatchInfo(BaseData):
     @property
     def character(self):
         return _getname('character', self.characterid)
+
+    @property
+    def track(self) -> str:
+        return _getname('track', self.trackid)

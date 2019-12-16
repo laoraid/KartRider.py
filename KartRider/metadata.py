@@ -28,11 +28,19 @@ def _get(datatype: str, finddata: str, datavalue: str, dataname: str):
     with open(os.path.join(_path, filename), encoding='utf8') as f:
         data = json.load(f)
 
+    result = None
+
     for item in data:
         if datavalue == item[dataname]:
-            return item[finddata]
+            result = item[finddata]
 
-    raise KeyError(f'id {datavalue} not found.')
+    if result == "":
+        return 'Unknown'
+
+    elif result == None:
+        raise KeyError(f'id {datavalue} not found.')
+
+    return result
 
 
 def _getid(datatype: str, name: str) -> str:
