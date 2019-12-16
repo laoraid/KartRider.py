@@ -47,7 +47,7 @@ class User(BaseData):
 
 
 class _Player(BaseData):
-    def __init__(self, api, name, accessid, **kwargs):
+    def __init__(self, api, **kwargs):
         changeattrs = {'kart': 'kartid',
                        'pet': 'petid', 'flyingPet': 'flyingPetid'}
         ignoreattrs = ['matchRank', 'matchWin', 'matchRetired']
@@ -56,7 +56,7 @@ class _Player(BaseData):
 
         rank = kwargs['matchRank']
 
-        if rank == '99' or rank == '':
+        if rank == '99' or rank is None:
             self.matchRank = -1
             self.matchRetired = True
         elif rank == '1':
