@@ -1,25 +1,39 @@
 from .basedata import BaseData
+from .user import _Player
+from . import utils
+from .metadata import _getname
 
 
 class _MatchResponse(BaseData):
-    def __init__(self, api, nickname, matches):
+    def __init__(self, api, nickname, matcheslist):
         super(_MatchResponse, self).__init__(api)
         self.nickname = nickname
-        self.matches = matches
+        self.matches = [None] * len(matcheslist)
+
+        for i, match in enumerate(matcheslist):
+            self.matches[i] = _Match(api, match['matchType'], match['matches'])
 
     def __len__(self):
         return len(self.matches)
 
 
 class _Match(BaseData):
-    def __init__(self, api, matchtypeid: str, matches: list):
+    def __init__(self, api, matchtypeid: str, matchesinfolist: list):
         super(_Match, self).__init__(api)
         self.matchtypeid = matchtypeid
-        self.matches = matches
+
+        self.matchesinfo = [None] * len(matchesinfolist)
+
+        for i, matchinfo in enumerate(matchesinfolist):
+            self.matchesinfo[i] = _MatchInfo(api, **matchinfo)
 
     @property
     def matchtype(self) -> str:
-        raise NotImplementedError  # TODO : Metadata에서 매치 이름 찾아서 반환
+        return _getname('gameType', self.matchtypeid)
+
+    @property
+    def track(self) -> str:
+        return _getname('track', self.trackid)
 
 
 class _MatchInfo(BaseData):
@@ -33,6 +47,11 @@ class _MatchInfo(BaseData):
         super(_MatchInfo, self).__init__(api, intattrs,
                                          ignoreattrs, changeattrs, **kwargs)
 
-        _ = {k: v for k, v in kwargs if k in ignoreattrs}
+        self.startTime = utils._change_str_todt(kwargs['startTime'])
+        self.endTime = utils._change_str_todt(kwargs['endTime'])
 
-        # TODO : ignoreattrs 처리
+        self.player = _Player(api, **kwargs['player'])
+
+    @property
+    def character(self):
+        return _getname('character', self.characterid)

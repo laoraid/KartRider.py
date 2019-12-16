@@ -56,7 +56,7 @@ class _Player(BaseData):
 
         rank = kwargs['matchRank']
 
-        if rank == '99' or rank is None:
+        if rank == '99' or rank == '':
             self.matchRank = -1
             self.matchRetired = True
         elif rank == '1':

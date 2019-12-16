@@ -13,7 +13,7 @@ class BaseData(object):
             if changenameattrs is None:
                 changenameattrs = {}
 
-            for k, v in kwargs:
+            for k, v in kwargs.items():
                 if k in ignoreattrs:
                     continue
                 elif k in intattrs:

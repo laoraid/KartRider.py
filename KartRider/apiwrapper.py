@@ -1,5 +1,8 @@
+import datetime
 import requests
 from .user import User
+from .match import _MatchResponse
+from . import utils
 _API_URL = 'https://api.nexon.co.kr/kart/v1.0/'
 
 
@@ -111,6 +114,20 @@ class Api(object):
 
         raw = self._getresponse(url).json()
         return raw
+
+    def getUserMatches(self, id: str, start_date: datetime.datetime = "",
+                       end_date: datetime.datetime = "", offset: int = 0,
+                       limit: int = 10, match_types_id: str = ""):
+        if start_date != '':
+            start_date = utils._change_dt_tostr(start_date)
+
+        if end_date != '':
+            end_date = utils._change_dt_tostr(end_date)
+
+        raw = self._getMatchlist(
+            id, start_date, end_date, offset, limit, match_types_id)
+
+        return _MatchResponse(self, raw['nickName'], raw['matches'])
 
     def _getAllmatchlist(self, start_date: str = "", end_date: str = "",
                          offset: int = 0, limit: int = 10,

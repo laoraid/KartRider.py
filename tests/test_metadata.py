@@ -16,7 +16,7 @@ def test_get():
 
 def test_exception():
     with pytest.raises(FileNotFoundError):
-      metadata.set_metadatapath('asdafegewgweg')
+        metadata.set_metadatapath('asdafegewgweg')
 
     with pytest.raises(FileNotFoundError):
         metadata._getid('asdsadaw', 'gegeg')
