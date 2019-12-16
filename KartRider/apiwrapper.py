@@ -136,6 +136,9 @@ class Api(object):
         if end_date != '':
             end_date = utils._change_dt_tostr(end_date)
 
+        if type(match_types) is str:
+            match_types = []
+
         match_type_ids = [None] * len(match_types)
 
         for i, name in enumerate(match_types):

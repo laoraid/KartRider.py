@@ -32,7 +32,8 @@ def test_user_match(api: KartRider.Api):
     metadata.set_metadatapath(os.path.join('tests', 'metadata'))
 
     match = api.getUserMatches('1560546859', datetime.datetime(
-        2019, 12, 16, 9, 0, 0), datetime.datetime(2019, 12, 16, 23, 0, 0))
+        2019, 12, 16, 9, 0, 0), datetime.datetime(2019, 12, 16, 23, 0, 0), 2,
+        14, match_types='스피드 팀전')
 
     assert match.nickname == '한글닉네임'
 
