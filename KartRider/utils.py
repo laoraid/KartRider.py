@@ -15,4 +15,3 @@ def _change_str_todt(date: str):
         dt = datetime.datetime.strptime(date, format)
 
     return dt
-    
