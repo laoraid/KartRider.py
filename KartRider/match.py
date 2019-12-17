@@ -35,7 +35,7 @@ class _Match(BaseData):
 class _MatchInfo(BaseData):
     def __init__(self, api, **kwargs):
         intattrs = ['playTime', 'playerCount']
-        ignoreattrs = ['startTime', 'endTime', 'player']
+        ignoreattrs = ['startTime', 'endTime', 'player', 'matchId']
         changeattrs = {'matchtype': 'matchtypeid',
                        'character': 'characterid',
                        'playtime': '_playtimesec'}
@@ -47,6 +47,7 @@ class _MatchInfo(BaseData):
         self.endTime = utils._change_str_todt(kwargs['endTime'])
 
         self.player = _Player(api, **kwargs['player'])
+        self.detail = _MatchDetail(api, kwargs['matchId'])
 
     @property
     def character(self):
@@ -104,7 +105,7 @@ class _MatchDetail(BaseData):
                     self.teams[i] = _Team(
                         self._api, team['teamId'], team['players'])
 
-            if k == 'players':
+            elif k == 'players':
                 self.players = [None] * len(v)
 
                 for i, player in enumerate(v):
@@ -114,7 +115,14 @@ class _MatchDetail(BaseData):
                 time = utils._change_str_todt(v)
                 setattr(self, k, time)
             else:
+                if v == '':
+                    v = None
                 setattr(self, k, v)
+
+        if 'teams' in self.__dict__:
+            self.isTeamGame = True
+        else:
+            self.isTeamGame = False
         self._cachedetail = True
 
     def __getattr__(self, attr):
@@ -123,8 +131,10 @@ class _MatchDetail(BaseData):
                      'trackId', 'teams', 'players']
 
         if attr in lazyattrs:
+            if self._cachedetail:
+                raise AttributeError
             self._getdetail()
-            return self.__dict__[attr]
+            return getattr(self, attr)
         raise AttributeError
 
 

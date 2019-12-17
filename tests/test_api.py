@@ -52,3 +52,5 @@ def test_user_match(api: KartRider.Api):
     assert p.kart == '흑기사 X'
     assert p.pet == '코코 펫'
     assert p.flyingPet == '플라잉 라이트론'
+
+    detail = d.detail
