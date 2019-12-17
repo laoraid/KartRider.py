@@ -22,9 +22,6 @@ def test_exception():
     with pytest.raises(FileNotFoundError):
         metadata._getid('asdsadaw', 'gegeg')
 
-    with pytest.raises(KeyError):
-        metadata._getid('kart', 'asdwef')
-
 
 def test_user():
     with pytest.raises(ValueError):

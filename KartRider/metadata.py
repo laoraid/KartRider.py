@@ -42,14 +42,40 @@ def _get(datatype: str, finddata: str, datavalue: str, dataname: str):
         if datavalue == item[dataname]:
             result = item[finddata]
 
-    if result == '' or datavalue is None:
+    if result == '' or datavalue is None or result is None:
         return 'Unknown'
-
-    elif result is None:
-        raise KeyError(f'id {datavalue} not found.')
 
     return result
 
 
 def _getid(datatype: str, name: str) -> str:
     return _get(datatype, 'id', name, 'name')
+
+
+def _gets(datatype):
+    filename = datatype + '.json'
+    _check_metadatapath(filename)
+
+    with open(os.path.join(_path, filename), encoding='utf8') as f:
+        data = json.load(f)
+
+    r = {}
+
+    for item in data:
+        r[item['id']] = item['name']
+
+    return r
+
+
+def _outer(datatype):
+    def inner() -> dict:
+        return _gets(datatype)
+    return inner
+
+
+getKarts = _outer('kart')
+getPets = _outer('pet')
+getTracks = _outer('track')
+getgameTypes = _outer('gameType')
+getflyingPets = _outer('flyingPet')
+getCharacters = _outer('character')
