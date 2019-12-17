@@ -17,6 +17,8 @@ class BaseData(object):
                 if k in ignoreattrs:
                     continue
                 elif k in intattrs:
+                    if v == '':
+                        v = 0
                     setattr(self, k, int(v))
                 elif k in changenameattrs:
                     setattr(self, changenameattrs[k], v)

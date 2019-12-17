@@ -59,12 +59,27 @@ class User(BaseData):
 
 
 class _Player(BaseData):
+    accountNo: str
+    characterName: str
+    characterId: str
+    flyingPetId: str
+    kartId: str
+    license: str
+    matchTime: int
+    partsEngine: str
+    partsHandle: str
+    partsKit: str
+    partsWheel: str
+    petId: str
+    rankinggrade2: str
+
     def __init__(self, api, **kwargs):
-        changeattrs = {'kart': 'kartid', 'character': 'characterid',
-                       'pet': 'petid', 'flyingPet': 'flyingPetid'}
+        changeattrs = {'kart': 'kartId', 'character': 'characterId',
+                       'pet': 'petId', 'flyingPet': 'flyingPetId'}
         ignoreattrs = ['matchRank', 'matchWin', 'matchRetired']
+        intattrs = ['matchTime']
         super(_Player, self).__init__(
-            api, None, ignoreattrs, changeattrs, **kwargs)
+            api, intattrs, ignoreattrs, changeattrs, **kwargs)
 
         rank = kwargs['matchRank']
 
@@ -85,16 +100,16 @@ class _Player(BaseData):
 
     @property
     def kart(self) -> str:
-        return _getname('kart', self.kartid)
+        return _getname('kart', self.kartId)
 
     @property
     def pet(self) -> str:
-        return _getname('pet', self.petid)
+        return _getname('pet', self.petId)
 
     @property
     def flyingPet(self) -> str:
-        return _getname('flyingPet', self.flyingPetid)
+        return _getname('flyingPet', self.flyingPetId)
 
     @property
     def character(self) -> str:
-        return _getname('character', self.characterid)
+        return _getname('character', self.characterId)

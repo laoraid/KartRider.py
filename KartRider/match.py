@@ -1,3 +1,4 @@
+from typing import List
 from .basedata import BaseData
 from .user import _Player
 from . import utils
@@ -5,10 +6,10 @@ from .metadata import _getname, _check_metadatapath
 
 
 class _MatchResponse(BaseData):
-    def __init__(self, api, nickname, matcheslist):
+    def __init__(self, api, nickname: str, matcheslist):
         super(_MatchResponse, self).__init__(api)
         self.nickname = nickname
-        self.matches = [None] * len(matcheslist)
+        self.matches: List['_Match'] = [None] * len(matcheslist)
 
         for i, match in enumerate(matcheslist):
             self.matches[i] = _Match(api, match['matchType'], match['matches'])
@@ -20,25 +21,32 @@ class _MatchResponse(BaseData):
 class _Match(BaseData):
     def __init__(self, api, matchtypeid: str, matchesinfolist: list):
         super(_Match, self).__init__(api)
-        self.matchtypeid = matchtypeid
-
-        self.matchesinfo = [None] * len(matchesinfolist)
+        self.matchTypeId = matchtypeid
+        self.matchesinfo: List['_MatchInfo'] = [None] * len(matchesinfolist)
 
         for i, matchinfo in enumerate(matchesinfolist):
             self.matchesinfo[i] = _MatchInfo(api, **matchinfo)
 
     @property
-    def matchtype(self) -> str:
-        return _getname('gameType', self.matchtypeid)
+    def matchType(self) -> str:
+        return _getname('gameType', self.matchTypeId)
 
 
 class _MatchInfo(BaseData):
+    accountNo: str
+    channelName: str
+    characterId: str
+    matchResult: str
+    matchTypeId: str
+    playerCount: int
+    teamId: str
+    trackId: str
+
     def __init__(self, api, **kwargs):
-        intattrs = ['playTime', 'playerCount']
+        intattrs = ['playerCount']
         ignoreattrs = ['startTime', 'endTime', 'player', 'matchId']
-        changeattrs = {'matchtype': 'matchtypeid',
-                       'character': 'characterid',
-                       'playtime': '_playtimesec'}
+        changeattrs = {'matchType': 'matchTypeId',
+                       'character': 'characterId'}
 
         super(_MatchInfo, self).__init__(api, intattrs,
                                          ignoreattrs, changeattrs, **kwargs)
@@ -50,12 +58,16 @@ class _MatchInfo(BaseData):
         self.detail = _MatchDetail(api, kwargs['matchId'])
 
     @property
-    def character(self):
-        return _getname('character', self.characterid)
+    def character(self) -> str:
+        return _getname('character', self.characterId)
 
     @property
     def track(self) -> str:
         return _getname('track', self.trackId)
+
+    @property
+    def matchType(self) -> str:
+        return _getname('gameType', self.matchTypeId)
 
 
 class _AllMatches(BaseData):
@@ -97,6 +109,8 @@ class _MatchDetail(BaseData):
             raise Exception
         raw = self._api._getMatchDetails(self.matchId)
 
+        changeattrs = {'matchType': 'matchTypeId'}
+
         for k, v in raw.items():
             if k == 'teams':  #
                 self.teams = [None] * len(v)
@@ -115,6 +129,8 @@ class _MatchDetail(BaseData):
                 time = utils._change_str_todt(v)
                 setattr(self, k, time)
             else:
+                if k in changeattrs:
+                    k = changeattrs[k]
                 if v == '':
                     v = None
                 setattr(self, k, v)
@@ -136,6 +152,10 @@ class _MatchDetail(BaseData):
             self._getdetail()
             return getattr(self, attr)
         raise AttributeError
+
+    @property
+    def matchType(self) -> str:
+        return _getname('gameType', self.matchTypeId)
 
 
 class _Team(object):

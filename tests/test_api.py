@@ -40,12 +40,13 @@ def test_user_match(api: KartRider.Api):
     assert match.nickname == '한글닉네임'
 
     t = match.matches[0]
-    assert t.matchtype == '스피드 팀전'
+    assert t.matchType == '스피드 팀전'
 
     d = t.matchesinfo[0]
     assert d.channelName == 'speedTeamFast'
     assert d.character == '황금망토 배찌'
     assert d.track == '도검 야외 수련관'
+    assert d.playerCount == 8
 
     p = d.player
     assert p.character == '황금망토 배찌'
@@ -54,3 +55,7 @@ def test_user_match(api: KartRider.Api):
     assert p.flyingPet == '플라잉 라이트론'
 
     detail = d.detail
+
+    assert detail.matchId == '02f10015820b59a1'
+    assert detail.channelName == 'speedTeamFast'
+    assert detail.matchType == '스피드 팀전'
