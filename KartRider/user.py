@@ -5,9 +5,9 @@ from .metadata import _getname
 
 class User(BaseData):
     """사용자 정보 클래스
-    User(api, name) -> 닉네임과 api로 User 클래스를 만듭니다.
-    User(api, accessid) -> Accessid로 User 클래스를 만듭니다.
-    User(name, accessid) -> 유효성 검사를 하지 않습니다.
+    >>> User(api, name) -> 닉네임과 api로 User 클래스를 만듭니다.
+    >>> User(api, accessid) -> Accessid로 User 클래스를 만듭니다.
+    >>> User(name, accessid) -> 유효성 검사를 하지 않습니다.
     name과 accessid가 확실하게 일치할때만 사용하세요.
     아니라면 대신 Api.user(nickname) 혹은 Api.user(accessid)를 사용하세요.
 

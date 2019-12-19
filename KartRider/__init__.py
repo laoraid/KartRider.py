@@ -3,7 +3,11 @@ from .apiwrapper import (
     NotFound, UnknownStatusCode
 )
 
-from .metadata import set_metadatapath
+from .metadata import (
+    set_metadatapath, getCharacters, getflyingPets,
+    getgameTypes, getKarts, getPets, getTracks)
 
 __all__ = ['Api', 'TooManyRequest', 'ForbiddenToken',
-           'InvalidToken', 'NotFound', 'UnknownStatusCode', 'set_metadatapath']
+           'InvalidToken', 'NotFound', 'UnknownStatusCode',
+           'set_metadatapath', 'getCharacters', 'getflyingPets',
+           'getgameTypes', 'getKarts', 'getPets', 'getTracks']
