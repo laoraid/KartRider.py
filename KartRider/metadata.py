@@ -7,7 +7,7 @@ _path = ""
 def set_metadatapath(path: str):
     """메타데이터의 경로를 설정합니다.
 
-    메타데이터는 python -m KartRider -d [api_key] 로 다운로드 받을 수 있습니다.
+    메타데이터는 python -m KartRider -d 로 다운로드 받을 수 있습니다.
     메타데이터 경로를 설정하지 않으면 여러 정보(카트, 트랙이름, 펫이름 등)의 실제 이름 확인이 불가능합니다.
 
     :param path: 메타데이터 폴더 경로 문자열

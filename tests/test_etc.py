@@ -33,3 +33,11 @@ def test_user():
         u = User(accessid='asf')
         print(u.name)
         u.getMatches()
+
+
+def test_gets():
+    nme = 'ee483cbf01cdc544e22b5837c59f80624477ddda9480789bec759c2faedb810a'
+    itlo = '7ca6fd44026a2c8f5d939b60aa56b4b1714b9cc2355ec5e317154d4cf0675da0'
+
+    assert nme in metadata.getCharacters()
+    assert itlo in metadata.getgameTypes()
