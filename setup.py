@@ -1,14 +1,16 @@
 from setuptools import find_packages, setup
 
 setup(
-    name='KartRider.py',
-    version='0.1.0',
+    name='KartRider',
+    version='0.1.1',
     url='https://github.com/laoraid/KartRider.py',
     license='MIT',
     author='Laoraid',
     author_email='a99azaz@gmail.com',
     description='KartRider Open API Python wrapper',
     packages=find_packages(exclude=['tests']),
+    long_description=open('README.md', encoding='utf8').read(),
+    long_description_content_type='text/markdown',
     keywords=['KartRider'],
     zip_safe=False,
     classifiers=[

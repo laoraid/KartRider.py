@@ -3,7 +3,7 @@ from datetime import datetime
 from .basedata import BaseData, AliasDict
 from .user import _Player
 from . import utils
-from .metadata import _getname, _check_metadatapath
+from .metadata import _getname, _safe_check
 
 
 class _MatchResponse(BaseData):
@@ -12,11 +12,7 @@ class _MatchResponse(BaseData):
         self.nickname = nickname
         self.matches: AliasDict[str, '_MatchInfo'] = AliasDict()
 
-        try:
-            _check_metadatapath('gameType.json')
-            meta = True
-        except FileNotFoundError:
-            meta = False
+        meta = _safe_check('gameType.json')
 
         for match in matcheslist:
             matchinforaw = match['matches']
@@ -89,11 +85,7 @@ class _AllMatches(BaseData):
         super(_AllMatches, self).__init__(api)
         self.matches: AliasDict[str, List['_MatchDetail']] = AliasDict()
 
-        try:
-            _check_metadatapath('gameType.json')
-            meta = True
-        except FileNotFoundError:
-            meta = False
+        meta = _safe_check('gameType.json')
 
         for item in matches:
             mt = item['matchType']

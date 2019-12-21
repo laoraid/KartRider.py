@@ -21,6 +21,14 @@ def set_metadatapath(path: str):
         raise FileNotFoundError('폴더가 없습니다.')
 
 
+def _safe_check(filename):
+    try:
+        _check_metadatapath(filename)
+    except FileNotFoundError:
+        return False
+    return True
+
+
 def _check_metadatapath(filename):
     if not os.path.isfile(os.path.join(_path, filename)):
         raise FileNotFoundError

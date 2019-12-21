@@ -10,3 +10,10 @@ script:
  - python -m pytest -v --cov=KartRider
 after_success:
  - codecov
+deploy:
+  provider: pypi
+  username: Laoraid
+  password: PYPI_PASSWORD
+  distributions: "sdist bdist_wheel"
+  on:
+    tags: true

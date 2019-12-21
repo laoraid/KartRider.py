@@ -1,6 +1,9 @@
-import datetime
+from datetime import datetime
+from typing import Union, List
 from .basedata import BaseData
 from .metadata import _getname
+
+dtstr = Union[datetime, str]
 
 
 class User(BaseData):
@@ -48,9 +51,22 @@ class User(BaseData):
             self._accessid = self._api._getIDbyNickname(self._name)
         return self._accessid
 
-    def getMatches(self, start_date: datetime.datetime = "",
-                   end_date: datetime.datetime = "", offset: int = 0,
-                   limit: int = 10, match_types=""):
+    def getMatches(self, start_date: dtstr = "",
+                   end_date: dtstr = "", offset: int = 0,
+                   limit: int = 10, match_types: Union[List[str], str] = ""):
+        """유저의 매치 데이터를 받아오는 메소드입니다.
+
+        :param start_date: 조회 시작 날짜(UTC) datetime 혹은 str
+        :param end_date: 조회 끝 날짜(UTC) datetime 혹은 str
+        :param offset: 조회 오프셋
+        :param limit: 조회 수 (최대 500건)
+        :param match_types: 매치 타입 이름 목록 (list 또는 문자열)
+
+        :raises ValueError: api가 None 일때 호출함
+
+        :return: 유저 매치 데이터 클래스
+        :rtype: _MatchResponse
+        """
         if self._api is None:
             raise ValueError('api 가 None 이지만 호출하려 했습니다.')
 

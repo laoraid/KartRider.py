@@ -4,8 +4,9 @@ from typing import Optional, List, Union
 from .user import User
 from .match import _MatchResponse, _AllMatches
 from . import utils
-from . import metadata
 _API_URL = 'https://api.nexon.co.kr/kart/v1.0/'
+
+dtstr = Union[datetime, str]
 
 
 class TooManyRequest(Exception):
@@ -118,57 +119,50 @@ class Api(object):
         raw = self._getresponse(url).json()
         return raw
 
-    def getUserMatches(self, id: str, start_date: datetime = "",
-                       end_date: datetime = "", offset: int = 0,
+    def getUserMatches(self, id: Union[str, User], start_date: dtstr = "",
+                       end_date: dtstr = "", offset: int = 0,
                        limit: int = 10,
                        match_types:
                        Union[List[str], str] = "") -> _MatchResponse:
         """유저의 매치 데이터를 받아오는 메소드입니다.
         Api.user(...).getMatches(...) 로 사용할 수도 있습니다.
 
-        :param id: 유저의 accessid
-        :param start_date: 조회 시작 날짜(UTC)
-        :param end_date: 조회 끝 날짜(UTC)
+        :param id: 유저의 accessid 혹은 User 클래스
+        :param start_date: 조회 시작 날짜(UTC) datetime 혹은 str
+        :param end_date: 조회 끝 날짜(UTC) datetime 혹은 str
         :param offset: 조회 오프셋
         :param limit: 조회 수 (최대 500건)
         :param match_types: 매치 타입 이름 목록 (list 또는 문자열)
         :return: 유저 매치 데이터 클래스
         :rtype: _MatchResponse
         """
-        if start_date != '':
-            start_date = utils._change_dt_tostr(start_date)
+        if type(id) is User:
+            id = id.accessid
 
-        if end_date != '':
-            end_date = utils._change_dt_tostr(end_date)
+        start_date, end_date = utils._convStEt(start_date, end_date)
 
-        match_type_ids = self._convMt(match_types)
+        match_type_ids = utils._convMt(match_types)
 
         raw = self._getMatchlist(
             id, start_date, end_date, offset, limit, match_type_ids)
 
         return _MatchResponse(self, raw['nickName'], raw['matches'])
 
-    def _convMt(self, mt: Union[List[str], str]):
-        if mt != '':
-            if type(mt) is str:
-                mt = [mt]
-
-            match_type_ids = [None] * len(mt)
-
-            for i, name in enumerate(mt):
-                match_type_ids[i] = metadata._getid('gameType', name)
-
-            match_type_ids = list(match_type_ids)
-            match_type_ids = ','.join(match_type_ids)
-        else:
-            match_type_ids = ''
-
-        return match_type_ids
-
-    def getAllMatches(self, start_date: str = "", end_date: str = "",
+    def getAllMatches(self, start_date: dtstr = "", end_date: dtstr = "",
                       offset: int = 0, limit: int = 10,
                       match_types: Union[List[str], str] = "") -> _AllMatches:
-        match_types = self._convMt(match_types)
+        """모든 유저의 매치 데이터를 받아옵니다.
+
+        :param start_date: 조회 시작 날짜(UTC) datetime 혹은 str
+        :param end_date: 조회 끝 날짜(UTC) datetime 혹은 str
+        :param offset: 조회 오프셋
+        :param limit: 조회 수 (최대 500건)
+        :param match_types: 매치 타입 이름 목록 (list 또는 문자열)
+        :return: 모든 매치 정보 클래스
+        :rtype: _AllMatches
+        """
+        start_date, end_date = utils._convStEt(start_date, end_date)
+        match_types = utils._convMt(match_types)
         url = _API_URL + (
             f'matches/all?start_date={start_date}'
             f'&end_date={end_date}&offset={offset}'
