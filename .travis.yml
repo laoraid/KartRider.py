@@ -13,7 +13,6 @@ after_success:
 deploy:
   provider: pypi
   username: Laoraid
-  password: PYPI_PASSWORD
   distributions: "sdist bdist_wheel"
   on:
     tags: true
