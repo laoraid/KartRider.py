@@ -1,11 +1,12 @@
 from setuptools import find_packages, setup
+from __about__ import __author__, __version__
 
 setup(
     name='KartRider',
-    version='0.2.0',
+    version=__version__,
     url='https://github.com/laoraid/KartRider.py',
     license='MIT',
-    author='Laoraid',
+    author=__author__,
     author_email='a99azaz@gmail.com',
     description='KartRider Open API Python wrapper',
     packages=find_packages(exclude=['tests']),
