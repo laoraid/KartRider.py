@@ -1,5 +1,6 @@
 import json
 import os
+import functools
 
 _path = ""
 
@@ -75,15 +76,64 @@ def _gets(datatype):
     return r
 
 
-def _outer(datatype):
-    def inner() -> dict:
-        return _gets(datatype)
-    return inner
+def _outouter(datatype):
+    def _outer(func):
+        @functools.wraps(func)
+        def inner() -> dict:
+            return _gets(datatype)
+        return inner
+    return _outer
 
 
-getKarts = _outer('kart')
-getPets = _outer('pet')
-getTracks = _outer('track')
-getgameTypes = _outer('gameType')
-getflyingPets = _outer('flyingPet')
-getCharacters = _outer('character')
+@_outouter('kart')
+def getKarts():
+    """카트 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.
+
+    :rtype: dict
+    """
+    pass
+
+
+@_outouter('pet')
+def getPets():
+    """펫 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.
+
+    :rtype: dict
+    """
+    pass
+
+
+@_outouter('track')
+def getTracks():
+    """트랙 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.
+
+    :rtype: dict
+    """
+    pass
+
+
+@_outouter('gameType')
+def getgameTypes():
+    """게임 유형 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.
+
+    :rtype: dict
+    """
+    pass
+
+
+@_outouter('flyingPet')
+def getflyingPets():
+    """플라잉펫 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.
+
+    :rtype: dict
+    """
+    pass
+
+
+@_outouter('character')
+def getCharacters():
+    """캐릭터 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.
+
+    :rtype: dict
+    """
+    pass

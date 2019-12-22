@@ -1,7 +1,7 @@
 from typing import TypeVar, Mapping
 
 
-class BaseData(object):
+class _BaseData(object):
     def __init__(self, api, intattrs=None, ignoreattrs=None,
                  changenameattrs=None, **kwargs):
         self._api = api
@@ -33,9 +33,9 @@ class BaseData(object):
 T = TypeVar('T')
 
 
-class AliasDict(dict, Mapping[str, T]):
+class _AliasDict(dict, Mapping[str, T]):
     def __init__(self, *args, **kwargs):
-        super(AliasDict, self).__init__(*args, **kwargs)
+        super(_AliasDict, self).__init__(*args, **kwargs)
         self._aliases = {}
 
     def __getitem__(self, key) -> T:

@@ -1,7 +1,6 @@
 import os
 from datetime import datetime
 import KartRider
-from KartRider.basedata import AliasDict
 import pytest
 
 try:
@@ -39,6 +38,7 @@ def test_user_match(api: KartRider.Api):
         14, match_types='스피드 팀전')
 
     assert match.nickname == '한글닉네임'
+    assert '스피드 팀전' in match
 
     d = match['스피드 팀전'][0]
     assert d.channelName == 'speedTeamFast'
@@ -71,7 +71,7 @@ def test_user_match(api: KartRider.Api):
         2019, 12, 16, 13, 18, second=43, microsecond=879000)
     assert detail.track == '도검 야외 수련관'
 
-    p = detail.teams[1].players[3]
+    p = detail.teams[1][3]
     assert p.characterName == '한글닉네임'
     assert p.kart == '흑기사 X'
     assert p.matchRank == -1
@@ -80,9 +80,8 @@ def test_user_match(api: KartRider.Api):
 def test_getAllMatches(api: KartRider.Api):
     a = api.getAllMatches()
 
-    assert type(a.matches) == AliasDict
-    for _, v in a.matches.items():
-        assert type(v[0]) == KartRider.match._MatchDetail
+    for _, v in a.items():
+        assert type(v[0]) == KartRider.match.MatchDetail
 
 
 def test_matchtypes(api: KartRider.Api):
@@ -91,7 +90,5 @@ def test_matchtypes(api: KartRider.Api):
                            datetime(2019, 12, 1), datetime(2019, 12, 15),
                            0, 30, types)
 
-    m = a.matches
-
     for type in types:
-        assert type in m
+        assert type in a

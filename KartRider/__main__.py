@@ -1,15 +1,15 @@
 import sys
-import os
+from zipfile import ZipFile
+from io import BytesIO
 import argparse
 import requests
 from tqdm import tqdm
 
 if __name__ == '__main__':
 
-    def download_meta(file_path):
+    def download_meta(file_dir):
         print('다운로드 준비 중...')
         url = 'https://static.api.nexon.co.kr/kart/latest/metadata.zip'
-        file_path = os.path.abspath(os.path.join(file_path, 'metadata.zip'))
         res = requests.get(url, stream=True)
 
         tsize = int(res.headers.get('content-length', 0))
@@ -17,10 +17,10 @@ if __name__ == '__main__':
 
         t = tqdm(total=tsize, unit='iB', unit_scale=True)
 
-        with open(file_path, 'wb') as f:
-            for data in res.iter_content(bsize):
-                t.update(len(data))
-                f.write(data)
+        zipdata = BytesIO()
+        for data in res.iter_content(bsize):
+            t.update(len(data))
+            zipdata.write(data)
 
         t.close()
         res.close()
@@ -29,7 +29,14 @@ if __name__ == '__main__':
             print('다운로드 실패')
             sys.exit(1)
         else:
-            print(f'다운로드 성공 : {file_path}')
+            print(f'압축 해제 중.. {file_dir}')
+            zipfile = ZipFile(zipdata)
+
+            zipfile.extractall(file_dir)
+            zipfile.close()
+            zipdata.close()
+
+            print(f'다운로드 성공')
             sys.exit(0)
 
     parser = argparse.ArgumentParser()

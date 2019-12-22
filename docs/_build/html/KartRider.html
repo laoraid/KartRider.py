@@ -1,0 +1,840 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>KartRider.py &mdash; KartRider 0.1.3 문서</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="색인" href="genindex.html" />
+    <link rel="search" title="검색" href="search.html" />
+    <link rel="prev" title="Welcome to KartRider’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> KartRider
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">KartRider.py</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">시작하기 전에</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">설치하기</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">레퍼런스</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-KartRider.apiwrapper">Api 클래스</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-KartRider.match">매치 데이터</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-KartRider.user">유저 데이터</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-KartRider.metadata">메타 데이터</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">KartRider</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>KartRider.py</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/KartRider.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="kartrider-py">
+<h1>KartRider.py<a class="headerlink" href="#kartrider-py" title="제목 주소">¶</a></h1>
+<div class="section" id="id1">
+<h2>시작하기 전에<a class="headerlink" href="#id1" title="제목 주소">¶</a></h2>
+<p>이 라이브러리는 카트라이더의 OpenAPI를 파이썬으로 래핑한 라이브러리입니다.
+사용하기 위해선 OpenAPI 의 API Key가 필요합니다.
+<a class="reference external" href="https://developers.nexon.com/kart/apiList">OpenAPI docs</a> 도 참고해 보세요.</p>
+<p>라이브러리의 모든 날짜는 UTC 기준입니다.</p>
+<div class="section" id="id2">
+<h3>설치하기<a class="headerlink" href="#id2" title="제목 주소">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">KartRider</span>
+<span class="o">&gt;</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">KartRider</span> <span class="o">-</span><span class="n">d</span> <span class="n">DOWNLOAD_DIR</span>
+</pre></div>
+</div>
+<p>경로를 지정해서 메타데이터를 다운로드 받으세요.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">KartRider</span>
+<span class="n">KartRider</span><span class="o">.</span><span class="n">set_metadatapath</span><span class="p">(</span><span class="n">DOWNLOAD_DIR</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>위와 같이 메타데이터의 경로를 설정합니다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">api</span> <span class="o">=</span> <span class="n">KartRider</span><span class="o">.</span><span class="n">Api</span><span class="p">(</span><span class="n">API_KEY</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>API KEY는 공개적으로 저장하지 마세요.</p>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>레퍼런스<a class="headerlink" href="#id3" title="제목 주소">¶</a></h2>
+<div class="section" id="module-KartRider.apiwrapper">
+<span id="api"></span><h3>Api 클래스<a class="headerlink" href="#module-KartRider.apiwrapper" title="제목 주소">¶</a></h3>
+<dl class="class">
+<dt id="KartRider.apiwrapper.Api">
+<em class="property">class </em><code class="sig-prename descclassname">KartRider.apiwrapper.</code><code class="sig-name descname">Api</code><span class="sig-paren">(</span><em class="sig-param">accesstoken</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.apiwrapper.Api" title="정의 주소">¶</a></dt>
+<dd><p>기반 클래스: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>카트라이더 OpenAPI Wrapper 클래스입니다.</p>
+<dl class="field-list simple">
+<dt class="field-odd">매개변수</dt>
+<dd class="field-odd"><p><strong>accesstoken</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – 사용자의 API KEY 문자열</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="KartRider.apiwrapper.Api.getAllMatches">
+<code class="sig-name descname">getAllMatches</code><span class="sig-paren">(</span><em class="sig-param">start_date=''</em>, <em class="sig-param">end_date=''</em>, <em class="sig-param">offset=0</em>, <em class="sig-param">limit=10</em>, <em class="sig-param">match_types=''</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.apiwrapper.Api.getAllMatches" title="정의 주소">¶</a></dt>
+<dd><p>모든 유저의 매치 데이터를 받아옵니다.</p>
+<dl class="field-list simple">
+<dt class="field-odd">매개변수</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start_date</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – 조회 시작 날짜(UTC)</p></li>
+<li><p><strong>end_date</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – 조회 끝 날짜(UTC)</p></li>
+<li><p><strong>offset</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – 조회 오프셋</p></li>
+<li><p><strong>limit</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – 조회 수 (최대 500건)</p></li>
+<li><p><strong>match_types</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – 매치 타입 이름이나 ID (리스트 또는 단일 문자열)</p></li>
+</ul>
+</dd>
+<dt class="field-even">예외</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="#KartRider.apiwrapper.InvalidToken" title="KartRider.apiwrapper.InvalidToken"><strong>InvalidToken</strong></a> – 잘못된 Token이나 파라미터 입력</p></li>
+<li><p><a class="reference internal" href="#KartRider.apiwrapper.ForbiddenToken" title="KartRider.apiwrapper.ForbiddenToken"><strong>ForbiddenToken</strong></a> – 허용되지 않은 AccessToken 사용</p></li>
+<li><p><a class="reference internal" href="#KartRider.apiwrapper.NotFound" title="KartRider.apiwrapper.NotFound"><strong>NotFound</strong></a> – 존재하지 않는 리소스</p></li>
+<li><p><a class="reference internal" href="#KartRider.apiwrapper.TooManyRequest" title="KartRider.apiwrapper.TooManyRequest"><strong>TooManyRequest</strong></a> – AccessToken의 요청 허용량 초과</p></li>
+<li><p><a class="reference internal" href="#KartRider.apiwrapper.UnknownStatusCode" title="KartRider.apiwrapper.UnknownStatusCode"><strong>UnknownStatusCode</strong></a> – 알 수 없는 오류</p></li>
+</ul>
+</dd>
+<dt class="field-odd">반환값</dt>
+<dd class="field-odd"><p>모든 매치 정보 클래스</p>
+</dd>
+<dt class="field-even">반환 형식</dt>
+<dd class="field-even"><p><a class="reference internal" href="#KartRider.match.AllMatches" title="KartRider.match.AllMatches">AllMatches</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="KartRider.apiwrapper.Api.getUserMatches">
+<code class="sig-name descname">getUserMatches</code><span class="sig-paren">(</span><em class="sig-param">id</em>, <em class="sig-param">start_date=''</em>, <em class="sig-param">end_date=''</em>, <em class="sig-param">offset=0</em>, <em class="sig-param">limit=10</em>, <em class="sig-param">match_types=''</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.apiwrapper.Api.getUserMatches" title="정의 주소">¶</a></dt>
+<dd><p>유저의 매치 데이터를 받아옵니다.
+Api.user(…).getMatches(…) 로도 사용할 수도 있습니다.</p>
+<dl class="field-list simple">
+<dt class="field-odd">매개변수</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="#KartRider.user.User" title="KartRider.user.User"><code class="xref py py-class docutils literal notranslate"><span class="pre">User</span></code></a>]) – 유저의 accessid 혹은 User 클래스</p></li>
+<li><p><strong>start_date</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – 조회 시작 날짜(UTC)</p></li>
+<li><p><strong>end_date</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – 조회 끝 날짜(UTC)</p></li>
+<li><p><strong>offset</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – 조회 오프셋</p></li>
+<li><p><strong>limit</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – 조회 수 (최대 500건)</p></li>
+<li><p><strong>match_types</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – 매치 타입 이름이나 ID (리스트 또는 단일 문자열)</p></li>
+</ul>
+</dd>
+<dt class="field-even">예외</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="#KartRider.apiwrapper.InvalidToken" title="KartRider.apiwrapper.InvalidToken"><strong>InvalidToken</strong></a> – 잘못된 Token이나 파라미터 입력</p></li>
+<li><p><a class="reference internal" href="#KartRider.apiwrapper.ForbiddenToken" title="KartRider.apiwrapper.ForbiddenToken"><strong>ForbiddenToken</strong></a> – 허용되지 않은 AccessToken 사용</p></li>
+<li><p><a class="reference internal" href="#KartRider.apiwrapper.NotFound" title="KartRider.apiwrapper.NotFound"><strong>NotFound</strong></a> – 존재하지 않는 리소스</p></li>
+<li><p><a class="reference internal" href="#KartRider.apiwrapper.TooManyRequest" title="KartRider.apiwrapper.TooManyRequest"><strong>TooManyRequest</strong></a> – AccessToken의 요청 허용량 초과</p></li>
+<li><p><a class="reference internal" href="#KartRider.apiwrapper.UnknownStatusCode" title="KartRider.apiwrapper.UnknownStatusCode"><strong>UnknownStatusCode</strong></a> – 알 수 없는 오류</p></li>
+</ul>
+</dd>
+<dt class="field-odd">반환 형식</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#KartRider.match.MatchResponse" title="KartRider.match.MatchResponse">MatchResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="KartRider.apiwrapper.Api.user">
+<code class="sig-name descname">user</code><span class="sig-paren">(</span><em class="sig-param">nickname=None</em>, <em class="sig-param">accessid=None</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.apiwrapper.Api.user" title="정의 주소">¶</a></dt>
+<dd><p>유저의 닉네임과 ID 클래스를 생성합니다.</p>
+<p>사용법:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">api</span> <span class="o">=</span> <span class="n">KartRider</span><span class="o">.</span><span class="n">Api</span><span class="p">(</span><span class="n">API_KEY</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">api</span><span class="o">.</span><span class="n">user</span><span class="p">(</span><span class="n">nickname</span><span class="p">)</span> <span class="c1"># nickname 으로 User 클래스 생성</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">api</span><span class="o">.</span><span class="n">user</span><span class="p">(</span><span class="n">accessid</span><span class="p">)</span> <span class="c1"># accessid 로 User 클래스 생성</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">api</span><span class="o">.</span><span class="n">user</span><span class="p">(</span><span class="n">nickname</span><span class="p">,</span> <span class="n">accessid</span><span class="p">)</span>
+<span class="go"># nickname 과 accessid 일치 여부 확인 후 User 클래스 생성</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">매개변수</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nickname</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – 검색할 닉네임</p></li>
+<li><p><strong>accessid</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – 검색할 accessid</p></li>
+</ul>
+</dd>
+<dt class="field-even">예외</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – nickname 과 accessid 모두 입력하지 않음</p></li>
+<li><p><strong>ValueError</strong> – nickname 과 ID가 일치하지 않음</p></li>
+<li><p><a class="reference internal" href="#KartRider.apiwrapper.InvalidToken" title="KartRider.apiwrapper.InvalidToken"><strong>InvalidToken</strong></a> – 잘못된 Token이나 파라미터 입력</p></li>
+<li><p><a class="reference internal" href="#KartRider.apiwrapper.ForbiddenToken" title="KartRider.apiwrapper.ForbiddenToken"><strong>ForbiddenToken</strong></a> – 허용되지 않은 AccessToken 사용</p></li>
+<li><p><a class="reference internal" href="#KartRider.apiwrapper.NotFound" title="KartRider.apiwrapper.NotFound"><strong>NotFound</strong></a> – 존재하지 않는 리소스</p></li>
+<li><p><a class="reference internal" href="#KartRider.apiwrapper.TooManyRequest" title="KartRider.apiwrapper.TooManyRequest"><strong>TooManyRequest</strong></a> – AccessToken의 요청 허용량 초과</p></li>
+<li><p><a class="reference internal" href="#KartRider.apiwrapper.UnknownStatusCode" title="KartRider.apiwrapper.UnknownStatusCode"><strong>UnknownStatusCode</strong></a> – 알 수 없는 오류</p></li>
+</ul>
+</dd>
+<dt class="field-odd">반환 형식</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#KartRider.user.User" title="KartRider.user.User">User</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="KartRider.apiwrapper.ForbiddenToken">
+<em class="property">exception </em><code class="sig-prename descclassname">KartRider.apiwrapper.</code><code class="sig-name descname">ForbiddenToken</code><a class="headerlink" href="#KartRider.apiwrapper.ForbiddenToken" title="정의 주소">¶</a></dt>
+<dd><p>기반 클래스: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>허용되지 않은 API key를 사용했을때(응답코드 403) 발생하는 오류입니다.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="KartRider.apiwrapper.InvalidToken">
+<em class="property">exception </em><code class="sig-prename descclassname">KartRider.apiwrapper.</code><code class="sig-name descname">InvalidToken</code><a class="headerlink" href="#KartRider.apiwrapper.InvalidToken" title="정의 주소">¶</a></dt>
+<dd><p>기반 클래스: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>잘못된 파라미터 입력(응답코드 400)을 할때 발생하는 오류입니다.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="KartRider.apiwrapper.NotFound">
+<em class="property">exception </em><code class="sig-prename descclassname">KartRider.apiwrapper.</code><code class="sig-name descname">NotFound</code><a class="headerlink" href="#KartRider.apiwrapper.NotFound" title="정의 주소">¶</a></dt>
+<dd><p>기반 클래스: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>리소스가 존재하지 않을때(응답코드 404) 발생하는 오류입니다.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="KartRider.apiwrapper.TooManyRequest">
+<em class="property">exception </em><code class="sig-prename descclassname">KartRider.apiwrapper.</code><code class="sig-name descname">TooManyRequest</code><a class="headerlink" href="#KartRider.apiwrapper.TooManyRequest" title="정의 주소">¶</a></dt>
+<dd><p>기반 클래스: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>API Key 의 요청 허용량을 초과했을때(응답코드 429) 발생하는 오류입니다.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="KartRider.apiwrapper.UnknownStatusCode">
+<em class="property">exception </em><code class="sig-prename descclassname">KartRider.apiwrapper.</code><code class="sig-name descname">UnknownStatusCode</code><a class="headerlink" href="#KartRider.apiwrapper.UnknownStatusCode" title="정의 주소">¶</a></dt>
+<dd><p>기반 클래스: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>OpenAPI나 모듈의 버그로 인하여 발생하는 오류입니다.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-KartRider.match">
+<span id="id4"></span><h3>매치 데이터<a class="headerlink" href="#module-KartRider.match" title="제목 주소">¶</a></h3>
+<dl class="class">
+<dt id="KartRider.match.AllMatches">
+<em class="property">class </em><code class="sig-prename descclassname">KartRider.match.</code><code class="sig-name descname">AllMatches</code><span class="sig-paren">(</span><em class="sig-param">api</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.match.AllMatches" title="정의 주소">¶</a></dt>
+<dd><p>기반 클래스: <code class="xref py py-class docutils literal notranslate"><span class="pre">KartRider.basedata._BaseData</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">KartRider.basedata._AliasDict</span></code></p>
+<p>전체 매치의 데이터를 담고 있는 클래스입니다.</p>
+<p>매치 타입 ID 또는 이름을 키로, <a class="reference internal" href="#KartRider.match.MatchDetail" title="KartRider.match.MatchDetail"><code class="xref py py-class docutils literal notranslate"><span class="pre">MatchDetail</span></code></a> 의 리스트를
+값으로 가지는 dict와 같습니다.</p>
+<dl>
+<dt>사용법:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mr</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">user</span><span class="p">(</span><span class="s1">&#39;닉네임&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getMatches</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mi</span> <span class="o">=</span> <span class="n">mr</span><span class="p">[</span><span class="s1">&#39;아이템 팀전&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mi</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">character</span>
+<span class="go">노네임</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="KartRider.match.MatchDetail">
+<em class="property">class </em><code class="sig-prename descclassname">KartRider.match.</code><code class="sig-name descname">MatchDetail</code><span class="sig-paren">(</span><em class="sig-param">api</em>, <em class="sig-param">matchid</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.match.MatchDetail" title="정의 주소">¶</a></dt>
+<dd><p>기반 클래스: <code class="xref py py-class docutils literal notranslate"><span class="pre">KartRider.basedata._BaseData</span></code></p>
+<p>매치의 상세 정보를 담고 있는 클래스입니다.</p>
+<dl>
+<dt>사용법:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">all</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">getAllMatches</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">teammatch</span> <span class="o">=</span> <span class="nb">all</span><span class="p">[</span><span class="s1">&#39;스피드 팀전&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">detail</span> <span class="o">=</span> <span class="n">teammatch</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">detail</span><span class="o">.</span><span class="n">matchType</span>
+<span class="go">스피드 팀전</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="method">
+<dt id="KartRider.match.MatchDetail.matchType">
+<em class="property">property </em><code class="sig-name descname">matchType</code><a class="headerlink" href="#KartRider.match.MatchDetail.matchType" title="정의 주소">¶</a></dt>
+<dd><p>매치 종류 이름</p>
+<dl class="field-list simple">
+<dt class="field-odd">예외</dt>
+<dd class="field-odd"><p><strong>FileNotFoundError</strong> – 메타데이터 경로가 설정되지 않았을때</p>
+</dd>
+<dt class="field-even">반환 형식</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="KartRider.match.MatchDetail.track">
+<em class="property">property </em><code class="sig-name descname">track</code><a class="headerlink" href="#KartRider.match.MatchDetail.track" title="정의 주소">¶</a></dt>
+<dd><p>트랙 이름</p>
+<dl class="field-list simple">
+<dt class="field-odd">예외</dt>
+<dd class="field-odd"><p><strong>FileNotFoundError</strong> – 메타데이터 경로가 설정되지 않았을때</p>
+</dd>
+<dt class="field-even">반환 형식</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="KartRider.match.MatchInfo">
+<em class="property">class </em><code class="sig-prename descclassname">KartRider.match.</code><code class="sig-name descname">MatchInfo</code><span class="sig-paren">(</span><em class="sig-param">api</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.match.MatchInfo" title="정의 주소">¶</a></dt>
+<dd><p>기반 클래스: <code class="xref py py-class docutils literal notranslate"><span class="pre">KartRider.basedata._BaseData</span></code></p>
+<p>매치 정보를 담고 있는 클래스입니다.</p>
+<dl>
+<dt>사용법:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mr</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">user</span><span class="p">(</span><span class="s1">&#39;닉네임&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getMatches</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mi</span> <span class="o">=</span> <span class="n">mr</span><span class="p">[</span><span class="s1">&#39;아이템 팀전&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mi</span><span class="o">.</span><span class="n">character</span>
+<span class="go">황금망토 배찌</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="method">
+<dt id="KartRider.match.MatchInfo.character">
+<em class="property">property </em><code class="sig-name descname">character</code><a class="headerlink" href="#KartRider.match.MatchInfo.character" title="정의 주소">¶</a></dt>
+<dd><p>캐릭터 이름</p>
+<dl class="field-list simple">
+<dt class="field-odd">예외</dt>
+<dd class="field-odd"><p><strong>FileNotFoundError</strong> – 메타데이터 경로가 설정되지 않았을때</p>
+</dd>
+<dt class="field-even">반환 형식</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KartRider.match.MatchInfo.characterId">
+<code class="sig-name descname">characterId</code><a class="headerlink" href="#KartRider.match.MatchInfo.characterId" title="정의 주소">¶</a></dt>
+<dd><p>캐릭터 ID(str)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KartRider.match.MatchInfo.detail">
+<code class="sig-name descname">detail</code><a class="headerlink" href="#KartRider.match.MatchInfo.detail" title="정의 주소">¶</a></dt>
+<dd><p>매치 상세 정보 (<a class="reference internal" href="#KartRider.match.MatchDetail" title="KartRider.match.MatchDetail"><code class="xref py py-class docutils literal notranslate"><span class="pre">MatchDetail</span></code></a>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KartRider.match.MatchInfo.endTime">
+<code class="sig-name descname">endTime</code><a class="headerlink" href="#KartRider.match.MatchInfo.endTime" title="정의 주소">¶</a></dt>
+<dd><p>게임 종료 시간(UTC)(datetime)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="KartRider.match.MatchInfo.matchType">
+<em class="property">property </em><code class="sig-name descname">matchType</code><a class="headerlink" href="#KartRider.match.MatchInfo.matchType" title="정의 주소">¶</a></dt>
+<dd><p>매치 종류 이름</p>
+<dl class="field-list simple">
+<dt class="field-odd">예외</dt>
+<dd class="field-odd"><p><strong>FileNotFoundError</strong> – 메타데이터 경로가 설정되지 않았을때</p>
+</dd>
+<dt class="field-even">반환 형식</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KartRider.match.MatchInfo.player">
+<code class="sig-name descname">player</code><a class="headerlink" href="#KartRider.match.MatchInfo.player" title="정의 주소">¶</a></dt>
+<dd><p>참여 유저 정보 (<a class="reference internal" href="#KartRider.user.Player" title="KartRider.user.Player"><code class="xref py py-class docutils literal notranslate"><span class="pre">KartRider.user.Player</span></code></a>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KartRider.match.MatchInfo.startTime">
+<code class="sig-name descname">startTime</code><a class="headerlink" href="#KartRider.match.MatchInfo.startTime" title="정의 주소">¶</a></dt>
+<dd><p>게임 시작 시간(UTC)(datetime)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="KartRider.match.MatchInfo.track">
+<em class="property">property </em><code class="sig-name descname">track</code><a class="headerlink" href="#KartRider.match.MatchInfo.track" title="정의 주소">¶</a></dt>
+<dd><p>트랙 이름</p>
+<dl class="field-list simple">
+<dt class="field-odd">예외</dt>
+<dd class="field-odd"><p><strong>FileNotFoundError</strong> – 메타데이터 경로가 설정되지 않았을때</p>
+</dd>
+<dt class="field-even">반환 형식</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="KartRider.match.MatchResponse">
+<em class="property">class </em><code class="sig-prename descclassname">KartRider.match.</code><code class="sig-name descname">MatchResponse</code><span class="sig-paren">(</span><em class="sig-param">api</em>, <em class="sig-param">nickname</em>, <em class="sig-param">matcheslist</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.match.MatchResponse" title="정의 주소">¶</a></dt>
+<dd><p>기반 클래스: <code class="xref py py-class docutils literal notranslate"><span class="pre">KartRider.basedata._BaseData</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">KartRider.basedata._AliasDict</span></code></p>
+<p>매치 응답 정보를 담고 있는 클래스입니다.</p>
+<p>매치 타입 ID 또는 이름을 키로, <a class="reference internal" href="#KartRider.match.MatchInfo" title="KartRider.match.MatchInfo"><code class="xref py py-class docutils literal notranslate"><span class="pre">MatchInfo</span></code></a> 의 리스트를
+값으로 가지는 dict와 같습니다.</p>
+<dl>
+<dt>사용법:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mr</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">user</span><span class="p">(</span><span class="s1">&#39;닉네임&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getMatches</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mr</span><span class="p">[</span><span class="s1">&#39;아이템 팀전&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">playerCount</span>
+<span class="go">6</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="KartRider.match.MatchResponse.nickname">
+<code class="sig-name descname">nickname</code><a class="headerlink" href="#KartRider.match.MatchResponse.nickname" title="정의 주소">¶</a></dt>
+<dd><p>매치 정보를 호출한 유저의 닉네임</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="KartRider.match.Team">
+<em class="property">class </em><code class="sig-prename descclassname">KartRider.match.</code><code class="sig-name descname">Team</code><span class="sig-paren">(</span><em class="sig-param">api</em>, <em class="sig-param">teamId</em>, <em class="sig-param">players</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.match.Team" title="정의 주소">¶</a></dt>
+<dd><p>기반 클래스: <code class="xref py py-class docutils literal notranslate"><span class="pre">typing.List</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></p>
+<p><a class="reference internal" href="#KartRider.user.Player" title="KartRider.user.Player"><code class="xref py py-class docutils literal notranslate"><span class="pre">KartRider.user.Player</span></code></a> 의 List입니다.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-KartRider.user">
+<span id="id5"></span><h3>유저 데이터<a class="headerlink" href="#module-KartRider.user" title="제목 주소">¶</a></h3>
+<dl class="class">
+<dt id="KartRider.user.Player">
+<em class="property">class </em><code class="sig-prename descclassname">KartRider.user.</code><code class="sig-name descname">Player</code><span class="sig-paren">(</span><em class="sig-param">api</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.user.Player" title="정의 주소">¶</a></dt>
+<dd><p>기반 클래스: <code class="xref py py-class docutils literal notranslate"><span class="pre">KartRider.basedata._BaseData</span></code></p>
+<p>매치 플레이어의 정보를 담고 있는 클래스입니다.</p>
+<dl>
+<dt>사용법:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">all</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">getAllMatches</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">teamgame</span> <span class="o">=</span> <span class="nb">all</span><span class="p">[</span><span class="s1">&#39;스피드 팀전&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">detail</span> <span class="o">=</span> <span class="n">teamgame</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">player</span> <span class="o">=</span> <span class="n">detail</span><span class="o">.</span><span class="n">teams</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">player</span><span class="o">.</span><span class="n">kart</span>
+<span class="go">루루 X</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="KartRider.user.Player.accountNo">
+<code class="sig-name descname">accountNo</code><a class="headerlink" href="#KartRider.user.Player.accountNo" title="정의 주소">¶</a></dt>
+<dd><p>유저 ID(str)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="KartRider.user.Player.character">
+<em class="property">property </em><code class="sig-name descname">character</code><a class="headerlink" href="#KartRider.user.Player.character" title="정의 주소">¶</a></dt>
+<dd><p>캐릭터 이름</p>
+<dl class="field-list simple">
+<dt class="field-odd">예외</dt>
+<dd class="field-odd"><p><strong>FileNotFoundError</strong> – 메타데이터 경로가 설정되지 않았을때</p>
+</dd>
+<dt class="field-even">반환 형식</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="KartRider.user.Player.flyingPet">
+<em class="property">property </em><code class="sig-name descname">flyingPet</code><a class="headerlink" href="#KartRider.user.Player.flyingPet" title="정의 주소">¶</a></dt>
+<dd><p>플라잉펫 이름</p>
+<dl class="field-list simple">
+<dt class="field-odd">예외</dt>
+<dd class="field-odd"><p><strong>FileNotFoundError</strong> – 메타데이터 경로가 설정되지 않았을때</p>
+</dd>
+<dt class="field-even">반환 형식</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="KartRider.user.Player.kart">
+<em class="property">property </em><code class="sig-name descname">kart</code><a class="headerlink" href="#KartRider.user.Player.kart" title="정의 주소">¶</a></dt>
+<dd><p>카트 이름</p>
+<dl class="field-list simple">
+<dt class="field-odd">예외</dt>
+<dd class="field-odd"><p><strong>FileNotFoundError</strong> – 메타데이터 경로가 설정되지 않았을때</p>
+</dd>
+<dt class="field-even">반환 형식</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="KartRider.user.Player.pet">
+<em class="property">property </em><code class="sig-name descname">pet</code><a class="headerlink" href="#KartRider.user.Player.pet" title="정의 주소">¶</a></dt>
+<dd><p>펫 이름</p>
+<dl class="field-list simple">
+<dt class="field-odd">예외</dt>
+<dd class="field-odd"><p><strong>FileNotFoundError</strong> – 메타데이터 경로가 설정되지 않았을때</p>
+</dd>
+<dt class="field-even">반환 형식</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="KartRider.user.User">
+<em class="property">class </em><code class="sig-prename descclassname">KartRider.user.</code><code class="sig-name descname">User</code><span class="sig-paren">(</span><em class="sig-param">api=None</em>, <em class="sig-param">name=None</em>, <em class="sig-param">accessid=None</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.user.User" title="정의 주소">¶</a></dt>
+<dd><p>기반 클래스: <code class="xref py py-class docutils literal notranslate"><span class="pre">KartRider.basedata._BaseData</span></code></p>
+<p>사용자 정보 클래스입니다.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">User</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+<span class="go"># 닉네임과 api로 User 클래스를 만듭니다.</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">User</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">accessid</span><span class="p">)</span>
+<span class="go"># Accessid로 User 클래스를 만듭니다.</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">User</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">accessid</span><span class="p">)</span>
+<span class="go"># 유효성 검사를 하지 않습니다.</span>
+<span class="go">name과 accessid가 확실하게 일치할때만 사용하세요.</span>
+<span class="go">아니라면 대신 Api.user(nickname) 혹은 Api.user(accessid)를 사용하세요.</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">참고</p>
+<p>api가 None 이고 name, accessid 중 하나만 입력했다면
+나머지 하나를 호출할때 ValueError가 던져집니다.
+api가 None 이 아니라면 나머지 하나를 호출할때
+api를 사용합니다.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">예외</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – name 과 accessid 모두 입력하지 않음</p>
+</dd>
+<dt class="field-even">매개변수</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>api</strong> (<a class="reference internal" href="#KartRider.apiwrapper.Api" title="KartRider.apiwrapper.Api"><em>KartRider.apiwrapper.Api</em></a>) – Api 클래스</p></li>
+<li><p><strong>name</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – 카트라이더 닉네임 문자열</p></li>
+<li><p><strong>accessid</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – 카트라이더 내부 유저 id 문자열(계정 id가 아님)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="KartRider.user.User.accessid">
+<em class="property">property </em><code class="sig-name descname">accessid</code><a class="headerlink" href="#KartRider.user.User.accessid" title="정의 주소">¶</a></dt>
+<dd><p>플레이어 고유 ID</p>
+<dl class="field-list simple">
+<dt class="field-odd">예외</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – api가 None인데 호출함</p>
+</dd>
+<dt class="field-even">반환 형식</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="KartRider.user.User.getMatches">
+<code class="sig-name descname">getMatches</code><span class="sig-paren">(</span><em class="sig-param">start_date=''</em>, <em class="sig-param">end_date=''</em>, <em class="sig-param">offset=0</em>, <em class="sig-param">limit=10</em>, <em class="sig-param">match_types=''</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.user.User.getMatches" title="정의 주소">¶</a></dt>
+<dd><p>유저의 매치 데이터를 받아옵니다.</p>
+<dl class="field-list simple">
+<dt class="field-odd">매개변수</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start_date</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – 조회 시작 날짜(UTC)</p></li>
+<li><p><strong>end_date</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – 조회 끝 날짜(UTC)</p></li>
+<li><p><strong>offset</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – 조회 오프셋</p></li>
+<li><p><strong>limit</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – 조회 수 (최대 500건)</p></li>
+<li><p><strong>match_types</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – 매치 타입 이름이나 ID (리스트 또는 단일 문자열)</p></li>
+</ul>
+</dd>
+<dt class="field-even">예외</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – api가 None인데 호출함</p></li>
+<li><p><a class="reference internal" href="#KartRider.apiwrapper.InvalidToken" title="KartRider.apiwrapper.InvalidToken"><strong>InvalidToken</strong></a> – 잘못된 Token이나 파라미터 입력</p></li>
+<li><p><a class="reference internal" href="#KartRider.apiwrapper.ForbiddenToken" title="KartRider.apiwrapper.ForbiddenToken"><strong>ForbiddenToken</strong></a> – 허용되지 않은 AccessToken 사용</p></li>
+<li><p><a class="reference internal" href="#KartRider.apiwrapper.NotFound" title="KartRider.apiwrapper.NotFound"><strong>NotFound</strong></a> – 존재하지 않는 리소스</p></li>
+<li><p><a class="reference internal" href="#KartRider.apiwrapper.TooManyRequest" title="KartRider.apiwrapper.TooManyRequest"><strong>TooManyRequest</strong></a> – AccessToken의 요청 허용량 초과</p></li>
+<li><p><a class="reference internal" href="#KartRider.apiwrapper.UnknownStatusCode" title="KartRider.apiwrapper.UnknownStatusCode"><strong>UnknownStatusCode</strong></a> – 알 수 없는 오류</p></li>
+</ul>
+</dd>
+<dt class="field-odd">반환 형식</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#KartRider.match.MatchResponse" title="KartRider.match.MatchResponse">MatchResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="KartRider.user.User.name">
+<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#KartRider.user.User.name" title="정의 주소">¶</a></dt>
+<dd><p>플레이어 닉네임</p>
+<dl class="field-list simple">
+<dt class="field-odd">예외</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – api가 None인데 호출함</p>
+</dd>
+<dt class="field-even">반환 형식</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-KartRider.metadata">
+<span id="id6"></span><h3>메타 데이터<a class="headerlink" href="#module-KartRider.metadata" title="제목 주소">¶</a></h3>
+<dl class="function">
+<dt id="KartRider.metadata.getCharacters">
+<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getCharacters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getCharacters" title="정의 주소">¶</a></dt>
+<dd><p>캐릭터 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.</p>
+<dl class="field-list simple">
+<dt class="field-odd">반환 형식</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="KartRider.metadata.getKarts">
+<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getKarts</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getKarts" title="정의 주소">¶</a></dt>
+<dd><p>카트 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.</p>
+<dl class="field-list simple">
+<dt class="field-odd">반환 형식</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="KartRider.metadata.getPets">
+<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getPets</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getPets" title="정의 주소">¶</a></dt>
+<dd><p>펫 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.</p>
+<dl class="field-list simple">
+<dt class="field-odd">반환 형식</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="KartRider.metadata.getTracks">
+<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getTracks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getTracks" title="정의 주소">¶</a></dt>
+<dd><p>트랙 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.</p>
+<dl class="field-list simple">
+<dt class="field-odd">반환 형식</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="KartRider.metadata.getflyingPets">
+<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getflyingPets</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getflyingPets" title="정의 주소">¶</a></dt>
+<dd><p>플라잉펫 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.</p>
+<dl class="field-list simple">
+<dt class="field-odd">반환 형식</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="KartRider.metadata.getgameTypes">
+<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getgameTypes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getgameTypes" title="정의 주소">¶</a></dt>
+<dd><p>게임 유형 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.</p>
+<dl class="field-list simple">
+<dt class="field-odd">반환 형식</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="KartRider.metadata.set_metadatapath">
+<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">set_metadatapath</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.set_metadatapath" title="정의 주소">¶</a></dt>
+<dd><p>메타데이터의 경로를 설정합니다.</p>
+<p>메타데이터는 python -m KartRider -d [경로] 로 다운로드 받을 수 있습니다.
+메타데이터 경로를 설정하지 않으면 여러 정보(카트, 트랙이름, 펫이름 등)의 실제 이름 확인이 불가능합니다.</p>
+<dl class="field-list simple">
+<dt class="field-odd">매개변수</dt>
+<dd class="field-odd"><p><strong>path</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – 메타데이터 폴더 경로 문자열</p>
+</dd>
+<dt class="field-even">예외</dt>
+<dd class="field-even"><p><strong>FileNotFoundError</strong> – 폴더가 존재하지 않을때</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to KartRider’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Laoraid
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
