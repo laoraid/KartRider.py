@@ -3,21 +3,8 @@
 
 [카트라이더 OpenAPI](https://developers.nexon.com/kart)를 Python으로 래핑한 라이브러리입니다.
 
-## 설치
-```console
-> pip install KartRider
-> python -m KartRider -d DOWNLOAD_DIR
-```
-로 메타데이터를 다운로드 합니다.
-
-```python
-import KartRider
-KartRider.set_metadatapath(메타데이터 경로)
-```
-메타데이터 경로를 위와 같이 설정합니다.
-
-## 사용법
-
+## 설치 및 사용법
+[KartRider.py docs](https://laoraid.github.io/KartRider.py/) 를 참고하세요.
 
 ## 사용권
 [MIT 라이센스](LICENSE)를 따르고, NEXON DEVELOPERS 의 api를 사용했습니다.
