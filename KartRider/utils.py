@@ -1,5 +1,6 @@
 import datetime
-from .metadata import _safe_check, _getid
+import re
+from . import metadata as md
 
 
 def _change_dt_tostr(dt: datetime.datetime):
@@ -25,18 +26,27 @@ def _convMt(mt):
 
         match_type_ids = [None] * len(mt)
 
-        if _safe_check('gameType.json'):
-            for i, name in enumerate(mt):
-                match_type_ids[i] = _getid('gameType', name)
+        for i, id in enumerate(mt):
+            if _isId(id):
+                match_type_ids[i] = id
+            else:
+                match_type_ids[i] = md._getid('gameType', id)
 
-            match_type_ids = list(match_type_ids)
-            match_type_ids = ','.join(match_type_ids)
-        else:
-            match_type_ids = ','.join(mt)
+        return ','.join(match_type_ids)
     else:
-        match_type_ids = ''
+        return ''
 
-    return match_type_ids
+
+def _isId(string):
+    if ' ' in string:
+        return False
+
+    ih = re.match('[ㄱ-ㅎㅏ-ㅣ가-힣]', string)
+
+    if ih is None:
+        return True
+
+    return False
 
 
 def _convStEt(st: datetime, et: datetime):

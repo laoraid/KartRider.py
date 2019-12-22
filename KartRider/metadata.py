@@ -1,6 +1,7 @@
 import json
 import os
 import functools
+from . import utils
 
 _path = ""
 
@@ -32,6 +33,11 @@ def _safe_check(filename):
 
 def _check_metadatapath(filename):
     if not os.path.isfile(os.path.join(_path, filename)):
+        raise FileNotFoundError
+
+
+def _check_metadatadir(dirname):
+    if not os.path.isdir(os.path.join(_path, dirname)):
         raise FileNotFoundError
 
 
@@ -74,6 +80,23 @@ def _gets(datatype):
         r[item['id']] = item['name']
 
     return r
+
+
+def getImagePath(name: str, typename: str) -> str:
+    """메타데이터 이미지의 경로를 가져옵니다.
+
+    :param name: 가져올 메타데이터의 이름 또는 Id
+    :param typename: 가져올 메타데이터 종류(kart, character, track)
+    :return: 메타데이터의 이미지 경로
+    :rtype: str
+    """
+    _check_metadatadir(typename)
+
+    name = name if utils._isId(name) else _getid(typename, name)
+    name = name + '.png'
+
+    path = os.path.join(_path, typename, name)
+    return path
 
 
 def _outouter(datatype):

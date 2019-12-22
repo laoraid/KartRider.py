@@ -15,6 +15,16 @@ def test_get():
     assert id == metadata._getid('kart', name)
 
 
+def test_getimage():
+    id = '1f438b9f6939d01b396acb96648c72a57f781b0dc8871bb84b3e2ff8da7ec0f2'
+    name = '폭스 9 XE'
+
+    path = os.path.join(metadata._path, 'kart', id + '.png')
+
+    assert path == metadata.getImagePath(id, 'kart')
+    assert path == metadata.getImagePath(name, 'kart')
+
+
 def test_exception():
     with pytest.raises(FileNotFoundError):
         metadata.set_metadatapath('asdafegewgweg')
