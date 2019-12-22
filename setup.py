@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='KartRider',
-    version='0.1.1',
+    version='0.2.0',
     url='https://github.com/laoraid/KartRider.py',
     license='MIT',
     author='Laoraid',
