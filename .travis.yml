@@ -6,7 +6,7 @@ install:
   - "pip install pytest-cov flake8 codecov"
 cache: pip
 script:
- - flake8 KartRider tests
+ - flake8 KartRider tests --ignore=E262
  - python -m pytest -v --cov=KartRider
 after_success:
  - codecov
