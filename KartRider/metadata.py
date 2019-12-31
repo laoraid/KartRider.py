@@ -99,64 +99,41 @@ def getImagePath(name: str, typename: str) -> str:
     return path
 
 
-def _outouter(datatype):
-    def _outer(func):
-        @functools.wraps(func)
-        def inner() -> dict:
-            return _gets(datatype)
-        return inner
-    return _outer
+getKarts = functools.partial(_gets, 'kart')
+"""카트 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.
+
+:rtype: dict
+"""
 
 
-@_outouter('kart')
-def getKarts():
-    """카트 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.
+getPets = functools.partial(_gets, 'pet')
+"""펫 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.
 
-    :rtype: dict
-    """
-    pass
+:rtype: dict
+"""
 
 
-@_outouter('pet')
-def getPets():
-    """펫 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.
+getTracks = functools.partial(_gets, 'track')
+"""트랙 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.
 
-    :rtype: dict
-    """
-    pass
+:rtype: dict
+"""
 
+getgameTypes = functools.partial(_gets, 'gameType')
+"""게임 유형 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.
 
-@_outouter('track')
-def getTracks():
-    """트랙 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.
-
-    :rtype: dict
-    """
-    pass
+:rtype: dict
+"""
 
 
-@_outouter('gameType')
-def getgameTypes():
-    """게임 유형 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.
+getflyingPets = functools.partial(_gets, 'flyingPet')
+"""플라잉펫 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.
 
-    :rtype: dict
-    """
-    pass
+:rtype: dict
+"""
 
+getCharacters = functools.partial(_gets, 'character')
+"""캐릭터 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.
 
-@_outouter('flyingPet')
-def getflyingPets():
-    """플라잉펫 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.
-
-    :rtype: dict
-    """
-    pass
-
-
-@_outouter('character')
-def getCharacters():
-    """캐릭터 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.
-
-    :rtype: dict
-    """
-    pass
+:rtype: dict
+"""

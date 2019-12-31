@@ -49,14 +49,14 @@ class MatchInfo(_BaseData):
         >>> mi.character
         황금망토 배찌
     """
-    accountNo: str  # : 계정 고유 식별자(str)
-    channelName: str  # : 채널 이름(str)
+    accountNo: str  #: 계정 고유 식별자(str)
+    channelName: str  #: 채널 이름(str)
     characterId: str  #: 캐릭터 ID(str)
-    matchResult: str  # :(str)
-    matchTypeId: str  # : 매치 종류 ID(str)
-    playerCount: int  # : 참여 유저 수(int)
-    teamId: str  # : 팀 ID(str)
-    trackId: str  # : 트랙 ID(str)
+    matchResult: str  #:(str)
+    matchTypeId: str  #: 매치 종류 ID(str)
+    playerCount: int  #: 참여 유저 수(int)
+    teamId: str  #: 팀 ID(str)
+    trackId: str  #: 트랙 ID(str)
 
     def __init__(self, api, **kwargs):
         intattrs = ['playerCount']
@@ -152,30 +152,32 @@ class MatchDetail(_BaseData):
         >>> detail = teammatch[0]
         >>> detail.matchType
         스피드 팀전
+
+    .. note:: matchTypeId를 제외한 나머지 속성들은 호출할때 최초 1번 api를 사용합니다.
     """
-    channelName: str  # : 채널 명(str)
-    endTime: datetime  # : 게임 종료 시간(datetime)
-    gameSpeed: int  # : 게임 스피드 모드(int)
-    matchResult: str  # : 매치 결과(str)
-    matchTypeId: str  # : 매치 종류 ID(str)
-    playTime: int  # : 게임 진행 시간(int)
-    startTime: datetime  # : 게임 시작 시간(datetime)
-    trackId: str  # : 트랙 ID(str)
+    channelName: str  #: 채널 명(str)
+    endTime: datetime  #: 게임 종료 시간(datetime)
+    gameSpeed: int  #: 게임 스피드 모드(int)
+    matchResult: str  #: 매치 결과(str)
+    matchTypeId: str  #: 매치 종류 ID(str)
+    playTime: int  #: 게임 진행 시간(int)
+    startTime: datetime  #: 게임 시작 시간(datetime)
+    trackId: str  #: 트랙 ID(str)
 
     def __init__(self, api, matchid):
-        self.matchId = matchid  # : 매치 ID(str)
+        self.matchId = matchid  #: 매치 ID(str)
         super(MatchDetail, self).__init__(api)
         self._cachedetail = False
 
     def _getdetail(self):
         if self._cachedetail:
-            raise Exception
+            raise Exception('알 수 없는 에러')
         raw = self._api._getMatchDetails(self.matchId)
 
         changeattrs = {'matchType': 'matchTypeId'}
 
         for k, v in raw.items():
-            if k == 'teams':  #
+            if k == 'teams':
                 self.teams: List['Team'] = [None] * len(v)
 
                 for i, team in enumerate(v):
@@ -240,7 +242,7 @@ class Team(List['user.Player'], list):
     """
 
     def __init__(self, api, teamId: int, players):
-        self.teamId = teamId  # : 팀 ID(str)
+        self.teamId = teamId  #: 팀 ID(str)
 
         for player in players:
             self.append(user.Player(api, **player))

@@ -113,18 +113,18 @@ class Player(_BaseData):
         루루 X
         """
     accountNo: str  #: 유저 ID(str)
-    characterName: str  # : 유저 닉네임(str)
-    characterId: str  # : 캐릭터 ID(str)
-    flyingPetId: str  # : 플라잉펫 ID(str)
-    kartId: str  # : 카트 ID(str)
-    license: str  # : 구 라이선스(str)
-    matchTime: int  # : 매치 진행 시간(int)
-    partsEngine: str  # :(str)
-    partsHandle: str  # :(str)
-    partsKit: str  # :(str)
-    partsWheel: str  # :(str)
-    petId: str  # : 펫 ID(str)
-    rankinggrade2: str  # : 리뉴얼 라이선스(str)
+    characterName: str  #: 유저 닉네임(str)
+    characterId: str  #: 캐릭터 ID(str)
+    flyingPetId: str  #: 플라잉펫 ID(str)
+    kartId: str  #: 카트 ID(str)
+    license: str  #: 구 라이선스(str)
+    matchTime: int  #: 매치 진행 시간(int)
+    partsEngine: str  #:(str)
+    partsHandle: str  #:(str)
+    partsKit: str  #:(str)
+    partsWheel: str  #:(str)
+    petId: str  #: 펫 ID(str)
+    rankinggrade2: str  #: 리뉴얼 라이선스(str)
 
     def __init__(self, api, **kwargs):
         changeattrs = {'kart': 'kartId', 'character': 'characterId',
@@ -137,8 +137,8 @@ class Player(_BaseData):
         rank = kwargs['matchRank']
 
         if rank == '99' or rank == '':
-            self.matchRank = -1  # : 순위, 리타이어는 -1
-            self.matchRetired = True  # : 리타이어 여부
+            self.matchRank = -1  #: 순위, 리타이어는 -1
+            self.matchRetired = True  #: 리타이어 여부
         elif rank == '1':
             self.matchRank = 1
             self.matchRetired = False
@@ -147,7 +147,7 @@ class Player(_BaseData):
             self.matchRetired = False
 
         if kwargs['matchWin'] == '0':
-            self.matchWin = False  # : 매치 승리 여부
+            self.matchWin = False  #: 매치 승리 여부
         else:
             self.matchWin = True
 

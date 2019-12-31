@@ -5,9 +5,9 @@ from .apiwrapper import (
 
 from .metadata import (
     set_metadatapath, getCharacters, getflyingPets,
-    getgameTypes, getKarts, getPets, getTracks)
+    getgameTypes, getKarts, getPets, getTracks, getImagePath)
 
 __all__ = ['Api', 'TooManyRequest', 'ForbiddenToken',
            'InvalidToken', 'NotFound', 'UnknownStatusCode',
            'set_metadatapath', 'getCharacters', 'getflyingPets',
-           'getgameTypes', 'getKarts', 'getPets', 'getTracks']
+           'getgameTypes', 'getKarts', 'getPets', 'getTracks', 'getImagePath']

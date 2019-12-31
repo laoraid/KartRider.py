@@ -9,6 +9,9 @@ except KeyError:
     import simpletest
     key = simpletest.key
 
+itemsolo = ('7ca6fd44026a2c8f5d939b60a'
+            'a56b4b1714b9cc2355ec5e317154d4cf0675da0')
+
 
 @pytest.fixture()
 def api():
@@ -22,6 +25,8 @@ def test_api_user(api: KartRider.Api):
         assert '1560546859' == api.user(nickname='한글닉네임').accessid
         assert '한글닉네임' == api.user(accessid='1560546859').name
         api.user(accessid='1560546859', nickname='한글닉네임')
+        with pytest.raises(ValueError):
+            api.user('124125125', 'z')
     except KartRider.UnknownStatusCode:
         pytest.skip()
 
@@ -31,8 +36,22 @@ def test_user_match(api: KartRider.Api):
 
     metadata.set_metadatapath(os.path.join('tests', 'metadata'))
 
+    # parameter tests #######
     api.getUserMatches('1560546859')
 
+    user = api.user(nickname='한글닉네임')
+    api.getUserMatches(user)
+
+    mtypes = [itemsolo, '아이템 팀전']
+
+    pt = api.getUserMatches('1560546859', start_date='2019-12-20 00:00:00',
+                            end_date=datetime(2019, 12, 20, 23),
+                            match_types=mtypes)
+
+    assert '아이템 팀전' in pt
+    assert itemsolo in pt
+
+    # #######################
     match = api.getUserMatches('1560546859', datetime(
         2019, 12, 16, 9, 0, 0), datetime(2019, 12, 16, 23, 0, 0), 2,
         14, match_types='스피드 팀전')
