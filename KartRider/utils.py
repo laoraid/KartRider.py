@@ -1,5 +1,4 @@
 from datetime import datetime
-import re
 from . import metadata as md
 
 
@@ -41,9 +40,7 @@ def _isId(string):
     if ' ' in string:
         return False
 
-    ih = re.match('[ㄱ-ㅎㅏ-ㅣ가-힣]', string)
-
-    if ih is None:
+    if len(string) >= 64:
         return True
 
     return False
