@@ -153,7 +153,8 @@ class MatchDetail(_BaseData):
         >>> detail.matchType
         스피드 팀전
 
-    .. note:: matchTypeId를 제외한 나머지 속성들은 호출할때 최초 1번 api를 사용합니다.
+    .. note:: matchTypeId를 제외한 나머지 속성들은 호출할때 최초 1번 api를 사용합니다.\n
+              isTeamGame 이 True 일시 teams를, false 일시 players 를 멤버로 갖습니다.
     """
     channelName: str  #: 채널 명(str)
     endTime: datetime  #: 게임 종료 시간(datetime)
@@ -163,6 +164,9 @@ class MatchDetail(_BaseData):
     playTime: int  #: 게임 진행 시간(int)
     startTime: datetime  #: 게임 시작 시간(datetime)
     trackId: str  #: 트랙 ID(str)
+    players: None  #: 참여 플레이어 정보 (list(:class:`KartRider.user.Player`))
+    teams: None  #: 팀 정보 (list(:class:`KartRider.match.Team`))
+    isTeamGame: bool #: 팀 게임 여부(bool)
 
     def __init__(self, api, matchid):
         self.matchId = matchid  #: 매치 ID(str)

@@ -256,6 +256,8 @@
 </div>
 <div class="section" id="id6">
 <h2>레퍼런스<a class="headerlink" href="#id6" title="제목 주소">¶</a></h2>
+<img alt="_images/uml.png" src="_images/uml.png" />
+<p>라이브러리의 uml 입니다.</p>
 <div class="section" id="module-KartRider.apiwrapper">
 <span id="api"></span><h3>Api 클래스<a class="headerlink" href="#module-KartRider.apiwrapper" title="제목 주소">¶</a></h3>
 <dl class="class">
@@ -443,6 +445,7 @@ Api.user(…).getMatches(…) 로도 사용할 수도 있습니다.</p>
 <div class="admonition note">
 <p class="admonition-title">참고</p>
 <p>matchTypeId를 제외한 나머지 속성들은 호출할때 최초 1번 api를 사용합니다.</p>
+<p>isTeamGame 이 True 일시 teams를, false 일시 players 를 멤버로 갖습니다.</p>
 </div>
 <dl class="attribute">
 <dt id="KartRider.match.MatchDetail.channelName">
@@ -460,6 +463,12 @@ Api.user(…).getMatches(…) 로도 사용할 수도 있습니다.</p>
 <dt id="KartRider.match.MatchDetail.gameSpeed">
 <code class="sig-name descname">gameSpeed</code><a class="headerlink" href="#KartRider.match.MatchDetail.gameSpeed" title="정의 주소">¶</a></dt>
 <dd><p>게임 스피드 모드(int)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KartRider.match.MatchDetail.isTeamGame">
+<code class="sig-name descname">isTeamGame</code><a class="headerlink" href="#KartRider.match.MatchDetail.isTeamGame" title="정의 주소">¶</a></dt>
+<dd><p>팀 게임 여부(bool)</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -501,9 +510,21 @@ Api.user(…).getMatches(…) 로도 사용할 수도 있습니다.</p>
 </dd></dl>
 
 <dl class="attribute">
+<dt id="KartRider.match.MatchDetail.players">
+<code class="sig-name descname">players</code><a class="headerlink" href="#KartRider.match.MatchDetail.players" title="정의 주소">¶</a></dt>
+<dd><p>참여 플레이어 정보 (list(<a class="reference internal" href="#KartRider.user.Player" title="KartRider.user.Player"><code class="xref py py-class docutils literal notranslate"><span class="pre">KartRider.user.Player</span></code></a>))</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="KartRider.match.MatchDetail.startTime">
 <code class="sig-name descname">startTime</code><a class="headerlink" href="#KartRider.match.MatchDetail.startTime" title="정의 주소">¶</a></dt>
 <dd><p>게임 시작 시간(datetime)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KartRider.match.MatchDetail.teams">
+<code class="sig-name descname">teams</code><a class="headerlink" href="#KartRider.match.MatchDetail.teams" title="정의 주소">¶</a></dt>
+<dd><p>팀 정보 (list(<a class="reference internal" href="#KartRider.match.Team" title="KartRider.match.Team"><code class="xref py py-class docutils literal notranslate"><span class="pre">KartRider.match.Team</span></code></a>))</p>
 </dd></dl>
 
 <dl class="method">
