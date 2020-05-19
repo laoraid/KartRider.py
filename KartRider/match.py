@@ -52,7 +52,7 @@ class MatchInfo(_BaseData):
     accountNo: str  #: 계정 고유 식별자(str)
     channelName: str  #: 채널 이름(str)
     characterId: str  #: 캐릭터 ID(str)
-    matchResult: str  #:(str)
+    matchResult: str  # :(str)
     matchTypeId: str  #: 매치 종류 ID(str)
     playerCount: int  #: 참여 유저 수(int)
     teamId: str  #: 팀 ID(str)
@@ -166,7 +166,7 @@ class MatchDetail(_BaseData):
     trackId: str  #: 트랙 ID(str)
     players: None  #: 참여 플레이어 정보 (list(:class:`KartRider.user.Player`))
     teams: None  #: 팀 정보 (list(:class:`KartRider.match.Team`))
-    isTeamGame: bool #: 팀 게임 여부(bool)
+    isTeamGame: bool  #: 팀 게임 여부(bool)
 
     def __init__(self, api, matchid):
         self.matchId = matchid  #: 매치 ID(str)
