@@ -36,7 +36,7 @@ if __name__ == '__main__':
             zipfile.close()
             zipdata.close()
 
-            print(f'다운로드 성공')
+            print('다운로드 성공')
             sys.exit(0)
 
     parser = argparse.ArgumentParser()
