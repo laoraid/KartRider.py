@@ -39,6 +39,71 @@ KartRider.py
 API KEY는 공개적으로 저장하지 마세요.
 
 ----------------------------
+튜토리얼
+----------------------------
+
+
+특정 아이디의 최근 10 매치 불러오기
+====================================
+
+.. code-block:: python
+
+    import KartRider
+
+    KartRider.set_metadatapath(META_PATH)
+    api = KartRider.Api(API_KEY)
+
+    nickname = '닉네임'
+
+    matches = api.user(nickname).getMatches(limit=10)
+
+    games = matches
+    for gametypeid, match in games.items():
+
+        gametype = KartRider.getgameTypes()[gametypeid]
+
+        for game in match:
+            print('게임 : {}, 캐릭터 : {}, 카트 : {}, 맵 : {}, 순위 : {}, 날짜 : {}'
+                .format(gametype,game.player.character, game.player.kart,
+                        game.track, game.player.matchRank, game.startTime))
+
+가장 최근 매치의 상세 정보 불러오기
+====================================
+.. code-block:: python
+
+    import KartRider
+
+    KartRider.set_metadatapath(META_PATH)
+    api = KartRider.Api(API_KEY)
+
+    nickname = '한글닉네임'
+
+    allmatches = api.getAllMatches(limit=10)
+
+    gametypegames = list(allmatches.values())
+    game = gametypegames[0][0]
+
+    print('게임 : {} , 채널 이름 : {}, 트랙 이름 : {}'
+          .format(game.matchType, game.channelName, game.track))
+
+    if game.isTeamGame:
+        i = 0
+        for players in game.team:
+            print('{}팀 :'.format(i))
+            for player in players:
+                print('닉네임 : {}, 캐릭터 : {}, 카트 : {}, 순위 : {}, 리타이어 여부 : {}'
+                      .format(player.characterName, player.character, player.kart,
+                              player.matchRank, player.matchRetired))
+            i += 1
+
+    else:
+        for player in game.players:
+                print('닉네임 : {}, 캐릭터 : {}, 카트 : {}, 순위 : {}, 리타이어 여부 : {}'
+                      .format(player.characterName, player.character, player.kart,
+                              player.matchRank, player.matchRetired))
+
+
+----------------------------
 레퍼런스
 ----------------------------
 
