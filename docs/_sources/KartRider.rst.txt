@@ -76,8 +76,6 @@ API KEY는 공개적으로 저장하지 마세요.
     KartRider.set_metadatapath(META_PATH)
     api = KartRider.Api(API_KEY)
 
-    nickname = '한글닉네임'
-
     allmatches = api.getAllMatches(limit=10)
 
     gametypegames = list(allmatches.values())

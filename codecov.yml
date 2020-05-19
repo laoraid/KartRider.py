@@ -5,6 +5,6 @@ coverage:
       default:
         enabled: yes
         target: 0%
-        threshold: null
+        threshold: 3%
         if_not_found: success
     patch: off
