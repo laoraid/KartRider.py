@@ -32,6 +32,8 @@ KartRider.py
 
 위와 같이 메타데이터를 다운로드 받고 경로를 설정합니다.
 
+메타데이터는 업데이트가 필요합니다. donwload_meta 함수를 며칠 주기로 호출하세요.
+
 ::
 
    api = KartRider.Api(API_KEY)
