@@ -49,7 +49,6 @@ def test_user_match(api: KartRider.Api):
                             match_types=mtypes)
 
     assert '아이템 팀전' in pt
-    assert itemsolo in pt
 
     # #######################
     match = api.getUserMatches('1560546859', datetime(

@@ -33,21 +33,25 @@ class _BaseData(object):
 T = TypeVar('T')
 
 
-class _AliasDict(dict, Mapping[str, T]):
+class MergeAbleDict(dict, Mapping[str, T]):
     def __init__(self, *args, **kwargs):
-        super(_AliasDict, self).__init__(*args, **kwargs)
-        self._aliases = {}
+        super(MergeAbleDict, self).__init__(*args, **kwargs)
 
-    def __getitem__(self, key) -> T:
-        return dict.__getitem__(self, self._aliases.get(key, key))
+    def mergeValues(self) -> list:
+        """dict의 리스트 밸류들을 모두 하나로 합칩니다.
+        
+        게임타입을 key로, 게임 정보의 리스트를 value 로 가지는 dict에서
+        게임타입을 무시하고게임 정보의 리스트를 합쳐 1차원 리스트로 반환합니다.
+        
 
-    def __setitem__(self, key, value):
-        return dict.__setitem__(self, self._aliases.get(key, key), value)
+        :return: 게임 정보의 리스트
+        :rtype: list
+        """
+        length = sum(len(x) for x in self.values())
+        li = [None] * length
 
-    def add_aliases(self, key, alias):
-        self._aliases[alias] = key
+        for v in self.values():
+            for i, rr in enumerate(v):
+                li[i] = rr
 
-    def __contains__(self, item):
-        if item in self._aliases:
-            return True
-        return dict.__contains__(self, item)
+        return li

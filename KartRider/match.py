@@ -1,16 +1,17 @@
 from typing import List
 from datetime import datetime
-from .basedata import _BaseData, _AliasDict
+from .basedata import _BaseData, MergeAbleDict
 from . import utils
-from .metadata import _getname, _safe_check
+from .metadata import (_safe_check, getTrackName, getGameTypeName,
+                       getCharacterName)
 from . import user
 
 
-class MatchResponse(_BaseData, _AliasDict[List['MatchInfo']]):
+class MatchResponse(_BaseData, MergeAbleDict[List['MatchInfo']]):
     """매치 응답 정보를 담고 있는 클래스입니다.
 
-    매치 타입 ID 또는 이름을 키로, :class:`.MatchInfo` 의 리스트를
-    값으로 가지는 dict와 같습니다.
+    매치 타입 ID 또는 이름(메타데이터 경로가 지정됐을때)을 키로,
+    :class:`.MatchInfo` 의 리스트를 값으로 가지는 dict와 같습니다.
 
     사용법:
         >>> mr = api.user('닉네임').getMatches()
@@ -20,7 +21,7 @@ class MatchResponse(_BaseData, _AliasDict[List['MatchInfo']]):
 
     def __init__(self, api, nickname: str, matcheslist):
         _BaseData.__init__(self, api)
-        _AliasDict.__init__(self)
+        MergeAbleDict.__init__(self)
 
         self.nickname = nickname  #: 매치 정보를 호출한 유저의 닉네임
 
@@ -33,11 +34,12 @@ class MatchResponse(_BaseData, _AliasDict[List['MatchInfo']]):
 
             for i, m in enumerate(matchinforaw):
                 matchinfo[i] = MatchInfo(api, **m)
-            self[matchtypeid] = matchinfo
 
             if meta:
-                self.add_aliases(
-                    matchtypeid, _getname('gameType', matchtypeid))
+                matchtype = getGameTypeName(matchtypeid)
+            else:
+                matchtype = matchtypeid
+            self[matchtype] = matchinfo
 
 
 class MatchInfo(_BaseData):
@@ -86,7 +88,7 @@ class MatchInfo(_BaseData):
         :raises FileNotFoundError: 메타데이터 경로가 설정되지 않았을때
         :rtype: str
         """
-        return _getname('character', self.characterId)
+        return getCharacterName(self.characterId)
 
     @property
     def track(self) -> str:
@@ -95,7 +97,7 @@ class MatchInfo(_BaseData):
         :raises FileNotFoundError: 메타데이터 경로가 설정되지 않았을때
         :rtype: str
         """
-        return _getname('track', self.trackId)
+        return getTrackName(self.trackId)
 
     @property
     def matchType(self) -> str:
@@ -104,14 +106,14 @@ class MatchInfo(_BaseData):
         :raises FileNotFoundError: 메타데이터 경로가 설정되지 않았을때
         :rtype: str
         """
-        return _getname('gameType', self.matchTypeId)
+        return getGameTypeName(self.matchTypeId)
 
 
-class AllMatches(_BaseData, _AliasDict['MatchDetail']):
+class AllMatches(_BaseData, MergeAbleDict['MatchDetail']):
     """전체 매치의 데이터를 담고 있는 클래스입니다.
 
-    매치 타입 ID 또는 이름을 키로, :class:`.MatchDetail` 의 리스트를
-    값으로 가지는 dict와 같습니다.
+    매치 타입 ID 또는 이름(메타데이터 경로가 지정됐을때)을 키로,
+    :class:`.MatchDetail` 의 리스트를 값으로 가지는 dict와 같습니다.
 
     사용법:
         >>> mr = api.user('닉네임').getMatches()
@@ -123,9 +125,7 @@ class AllMatches(_BaseData, _AliasDict['MatchDetail']):
     def __init__(self, api, **kwargs):
         matches = kwargs['matches']
         _BaseData.__init__(self, api)
-        _AliasDict.__init__(self)
-        #: 매치 정보 목록
-        # self.matches: _AliasDict[str, List['MatchDetail']] = _AliasDict()
+        MergeAbleDict.__init__(self)
 
         meta = _safe_check('gameType.json')
 
@@ -133,14 +133,14 @@ class AllMatches(_BaseData, _AliasDict['MatchDetail']):
             mt = item['matchType']
             prematchlist = item['matches']
 
+            if meta:
+                mt = getGameTypeName(mt)
+
             self[mt] = [None] * len(prematchlist)
 
             for i, match in enumerate(prematchlist):
                 detail = MatchDetail(self._api, match)
                 self[mt][i] = detail
-                if meta:
-                    name = _getname('gameType', mt)
-                    self.add_aliases(mt, name)
 
 
 class MatchDetail(_BaseData):
@@ -229,7 +229,7 @@ class MatchDetail(_BaseData):
         :raises FileNotFoundError: 메타데이터 경로가 설정되지 않았을때
         :rtype: str
         """
-        return _getname('gameType', self.matchTypeId)
+        return getGameTypeName(self.matchTypeId)
 
     @property
     def track(self) -> str:
@@ -238,7 +238,7 @@ class MatchDetail(_BaseData):
         :raises FileNotFoundError: 메타데이터 경로가 설정되지 않았을때
         :rtype: str
         """
-        return _getname('track', self.trackId)
+        return getTrackName(self.trackId)
 
 
 class Team(List['user.Player'], list):
