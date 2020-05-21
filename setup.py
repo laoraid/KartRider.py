@@ -15,7 +15,7 @@ setup(
     keywords=['KartRider'],
     zip_safe=False,
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
@@ -23,6 +23,6 @@ setup(
         'Natural Language :: Korean',
         'Topic :: Software Development :: Libraries :: Python Modules'
     ],
-    install_requires=['requests', 'tqdm'],
+    install_requires=['requests'],
     python_requires='>=3.6'
 )

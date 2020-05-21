@@ -21,16 +21,16 @@ KartRider.py
 ::
 
    > pip install KartRider
-   > python -m KartRider -d DOWNLOAD_DIR
 
-경로를 지정해서 메타데이터를 다운로드 받으세요.
 
 ::
 
    import KartRider
+   KartRider.download_meta(DOWNLOAD_DIR)
+   # or downmeta_ifnotexist(DOWNLOAD_DIR)
    KartRider.set_metadatapath(DOWNLOAD_DIR)
 
-위와 같이 메타데이터의 경로를 설정합니다.
+위와 같이 메타데이터를 다운로드 받고 경로를 설정합니다.
 
 ::
 
@@ -68,12 +68,13 @@ API KEY는 공개적으로 저장하지 마세요.
 가장 최근 매치의 상세 정보 불러오기
 ====================================
 .. code-block:: python
+
     import KartRider
 
     KartRider.set_metadatapath(META_PATH)
     api = KartRider.Api(API_KEY)
 
-    allmatches = api.getAllMatches(limit=10)
+    allmatches = api.getAllMatches(limit=1)
 
     game = allmatches.mergeValues()[0]
 
@@ -117,6 +118,11 @@ Api 클래스
 ==========================
 
 .. automodule:: KartRider.match
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: KartRider.basedata
    :members:
    :undoc-members:
    :show-inheritance:

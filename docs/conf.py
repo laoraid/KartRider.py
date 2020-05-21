@@ -19,7 +19,7 @@ from __about__ import __version__, __author__
 # -- Project information -----------------------------------------------------
 
 project = 'KartRider'
-copyright = '2019, Laoraid'
+copyright = '2020, Laoraid'
 author = __author__
 
 # The full version, including alpha/beta/rc tags

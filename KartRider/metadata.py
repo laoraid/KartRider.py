@@ -1,6 +1,9 @@
 import json
 import os
 import functools
+from zipfile import ZipFile
+from io import BytesIO
+import requests
 from . import utils
 
 _path = ""
@@ -273,3 +276,43 @@ def getTrackId(name: str) -> str:
     :rtype: str
     """
     return _getId('track', name)
+
+
+def download_meta(file_dir: str):
+    """메타데이터를 다운로드 합니다.
+
+    :param file_dir: 메타데이터가 들어갈 폳더 경로
+    :type file_dir: str
+    """
+    url = 'https://static.api.nexon.co.kr/kart/latest/metadata.zip'
+    res = requests.get(url)
+
+    zipfile = ZipFile(BytesIO(res.content))
+
+    zipfile.extractall(file_dir)
+    res.close()
+    zipfile.close()
+
+
+def downmeta_ifnotexist(file_dir: str) -> bool:
+    """메타데이터 폴더가 없으면 메타데이터를 다운로드 합니다.
+
+    :param file_dir: 메타데이터가 들어가거나 있는 폴더
+    :type file_dir: str
+    :return: 다운로드 했으면 True, 하지 않았으면 False 를 반환합니다.
+    :rtype: bool
+    """
+    filenames = ['character', 'flyingPet', 'gameType', 'kart', 'pet', 'track']
+    images = ['character', 'kart', 'track']
+
+    for filename in filenames:
+        if not os.path.isfile(os.path.join(file_dir, filename + '.json')):
+            download_meta(file_dir)
+            return True
+
+    for image in images:
+        if not os.path.isdir(os.path.join(file_dir, image)):
+            download_meta(file_dir)
+            return True
+
+    return False

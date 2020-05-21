@@ -8,7 +8,7 @@ from .metadata import (
     getgameTypesDict, getKartsDict, getPetsDict, getTracksDict, getImagePath,
     getCharacterName, getCharacterId, getFlyingPetId, getFlyingPetName,
     getGameTypeId, getGameTypeName, getKartId, getKartName, getPetId,
-    getPetName, getTrackId, getTrackName)
+    getPetName, getTrackId, getTrackName, download_meta, downmeta_ifnotexist)
 
 __all__ = ['Api', 'TooManyRequest', 'ForbiddenToken',
            'InvalidToken', 'NotFound', 'UnknownStatusCode',
@@ -18,4 +18,4 @@ __all__ = ['Api', 'TooManyRequest', 'ForbiddenToken',
            'getCharacterId', 'getFlyingPetId', 'getFlyingPetName',
            'getGameTypeId', 'getGameTypeName', 'getKartId',
            'getKartName', 'getPetId', 'getPetName', 'getTrackId',
-           'getTrackName']
+           'getTrackName', 'download_meta', 'downmeta_ifnotexist']
