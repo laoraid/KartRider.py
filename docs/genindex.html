@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>색인 &mdash; KartRider 0.4.1 문서</title>
+  <title>색인 &mdash; KartRider 0.5.0 문서</title>
   
 
   
@@ -221,6 +221,12 @@
       <li><a href="KartRider.html#KartRider.match.MatchInfo.detail">detail (KartRider.match.MatchInfo의 속성)</a>
 </li>
   </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="KartRider.html#KartRider.metadata.download_meta">download_meta() (KartRider.metadata 모듈)</a>
+</li>
+      <li><a href="KartRider.html#KartRider.metadata.downmeta_ifnotexist">downmeta_ifnotexist() (KartRider.metadata 모듈)</a>
+</li>
+  </ul></td>
 </tr></table>
 
 <h2 id="E">E</h2>
@@ -256,23 +262,47 @@
 </li>
       <li><a href="KartRider.html#KartRider.apiwrapper.Api.getAllMatches">getAllMatches() (KartRider.apiwrapper.Api 메서드)</a>
 </li>
-      <li><a href="KartRider.html#KartRider.metadata.getCharacters">getCharacters() (KartRider.metadata 모듈)</a>
+      <li><a href="KartRider.html#KartRider.metadata.getCharacterId">getCharacterId() (KartRider.metadata 모듈)</a>
 </li>
-      <li><a href="KartRider.html#KartRider.metadata.getflyingPets">getflyingPets() (KartRider.metadata 모듈)</a>
+      <li><a href="KartRider.html#KartRider.metadata.getCharacterName">getCharacterName() (KartRider.metadata 모듈)</a>
 </li>
-      <li><a href="KartRider.html#KartRider.metadata.getgameTypes">getgameTypes() (KartRider.metadata 모듈)</a>
+      <li><a href="KartRider.html#KartRider.metadata.getCharactersDict">getCharactersDict() (KartRider.metadata 모듈)</a>
+</li>
+      <li><a href="KartRider.html#KartRider.metadata.getFlyingPetId">getFlyingPetId() (KartRider.metadata 모듈)</a>
+</li>
+      <li><a href="KartRider.html#KartRider.metadata.getFlyingPetName">getFlyingPetName() (KartRider.metadata 모듈)</a>
+</li>
+      <li><a href="KartRider.html#KartRider.metadata.getflyingPetsDict">getflyingPetsDict() (KartRider.metadata 모듈)</a>
+</li>
+      <li><a href="KartRider.html#KartRider.metadata.getGameTypeId">getGameTypeId() (KartRider.metadata 모듈)</a>
+</li>
+      <li><a href="KartRider.html#KartRider.metadata.getGameTypeName">getGameTypeName() (KartRider.metadata 모듈)</a>
+</li>
+      <li><a href="KartRider.html#KartRider.metadata.getgameTypesDict">getgameTypesDict() (KartRider.metadata 모듈)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="KartRider.html#KartRider.metadata.getImagePath">getImagePath() (KartRider.metadata 모듈)</a>
 </li>
-      <li><a href="KartRider.html#KartRider.metadata.getKarts">getKarts() (KartRider.metadata 모듈)</a>
+      <li><a href="KartRider.html#KartRider.metadata.getKartId">getKartId() (KartRider.metadata 모듈)</a>
+</li>
+      <li><a href="KartRider.html#KartRider.metadata.getKartName">getKartName() (KartRider.metadata 모듈)</a>
+</li>
+      <li><a href="KartRider.html#KartRider.metadata.getKartsDict">getKartsDict() (KartRider.metadata 모듈)</a>
 </li>
       <li><a href="KartRider.html#KartRider.user.User.getMatches">getMatches() (KartRider.user.User 메서드)</a>
 </li>
-      <li><a href="KartRider.html#KartRider.metadata.getPets">getPets() (KartRider.metadata 모듈)</a>
+      <li><a href="KartRider.html#KartRider.metadata.getPetId">getPetId() (KartRider.metadata 모듈)</a>
 </li>
-      <li><a href="KartRider.html#KartRider.metadata.getTracks">getTracks() (KartRider.metadata 모듈)</a>
+      <li><a href="KartRider.html#KartRider.metadata.getPetName">getPetName() (KartRider.metadata 모듈)</a>
+</li>
+      <li><a href="KartRider.html#KartRider.metadata.getPetsDict">getPetsDict() (KartRider.metadata 모듈)</a>
+</li>
+      <li><a href="KartRider.html#KartRider.metadata.getTrackId">getTrackId() (KartRider.metadata 모듈)</a>
+</li>
+      <li><a href="KartRider.html#KartRider.metadata.getTrackName">getTrackName() (KartRider.metadata 모듈)</a>
+</li>
+      <li><a href="KartRider.html#KartRider.metadata.getTracksDict">getTracksDict() (KartRider.metadata 모듈)</a>
 </li>
       <li><a href="KartRider.html#KartRider.apiwrapper.Api.getUserMatches">getUserMatches() (KartRider.apiwrapper.Api 메서드)</a>
 </li>
@@ -302,6 +332,8 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="KartRider.html#module-KartRider.basedata">KartRider.basedata (모듈)</a>
+</li>
       <li><a href="KartRider.html#module-KartRider.match">KartRider.match (모듈)</a>
 </li>
       <li><a href="KartRider.html#module-KartRider.metadata">KartRider.metadata (모듈)</a>
@@ -333,15 +365,11 @@
       <li><a href="KartRider.html#KartRider.match.MatchResponse">MatchResponse (KartRider.match 클래스)</a>
 </li>
       <li><a href="KartRider.html#KartRider.match.MatchDetail.matchResult">matchResult (KartRider.match.MatchDetail의 속성)</a>
-
-      <ul>
-        <li><a href="KartRider.html#KartRider.match.MatchInfo.matchResult">(KartRider.match.MatchInfo의 속성)</a>
 </li>
-      </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="KartRider.html#KartRider.user.Player.matchRetired">matchRetired (KartRider.user.Player의 속성)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="KartRider.html#KartRider.user.Player.matchTime">matchTime (KartRider.user.Player의 속성)</a>
 </li>
       <li><a href="KartRider.html#KartRider.match.MatchDetail.matchType">matchType() (KartRider.match.MatchDetail property)</a>
@@ -357,6 +385,10 @@
 </li>
       </ul></li>
       <li><a href="KartRider.html#KartRider.user.Player.matchWin">matchWin (KartRider.user.Player의 속성)</a>
+</li>
+      <li><a href="KartRider.html#KartRider.basedata.MergeAbleDict">MergeAbleDict (KartRider.basedata 클래스)</a>
+</li>
+      <li><a href="KartRider.html#KartRider.basedata.MergeAbleDict.mergeValues">mergeValues() (KartRider.basedata.MergeAbleDict 메서드)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -487,7 +519,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Laoraid
+        &copy; Copyright 2020, Laoraid
 
     </p>
   </div>

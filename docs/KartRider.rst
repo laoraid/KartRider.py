@@ -7,7 +7,7 @@ KartRider.py
 ---------------------
 
 이 라이브러리는 카트라이더의 OpenAPI를 파이썬으로 래핑한 라이브러리입니다.
-사용하기 위해선 OpenAPI 의 API Key가 필요합니다.
+사용하기 위해선 KartRider OpenAPI 의 API Key가 필요합니다.
 `OpenAPI docs <https://developers.nexon.com/kart/apiList>`__ 도 참고해 보세요.
 
 라이브러리의 모든 날짜는 UTC 기준입니다.
@@ -27,7 +27,7 @@ KartRider.py
 
    import KartRider
    KartRider.download_meta(DOWNLOAD_DIR)
-   # or downmeta_ifnotexist(DOWNLOAD_DIR)
+   # OR downmeta_ifnotexist(DOWNLOAD_DIR)
    KartRider.set_metadatapath(DOWNLOAD_DIR)
 
 위와 같이 메타데이터를 다운로드 받고 경로를 설정합니다.

@@ -7,7 +7,7 @@ KartRider.py
 ---------------------
 
 이 라이브러리는 카트라이더의 OpenAPI를 파이썬으로 래핑한 라이브러리입니다.
-사용하기 위해선 OpenAPI 의 API Key가 필요합니다.
+사용하기 위해선 KartRider OpenAPI 의 API Key가 필요합니다.
 `OpenAPI docs <https://developers.nexon.com/kart/apiList>`__ 도 참고해 보세요.
 
 라이브러리의 모든 날짜는 UTC 기준입니다.
@@ -21,16 +21,16 @@ KartRider.py
 ::
 
    > pip install KartRider
-   > python -m KartRider -d DOWNLOAD_DIR
 
-경로를 지정해서 메타데이터를 다운로드 받으세요.
 
 ::
 
    import KartRider
+   KartRider.download_meta(DOWNLOAD_DIR)
+   # OR downmeta_ifnotexist(DOWNLOAD_DIR)
    KartRider.set_metadatapath(DOWNLOAD_DIR)
 
-위와 같이 메타데이터의 경로를 설정합니다.
+위와 같이 메타데이터를 다운로드 받고 경로를 설정합니다.
 
 ::
 
@@ -58,9 +58,7 @@ API KEY는 공개적으로 저장하지 마세요.
     matches = api.user(nickname).getMatches(limit=10)
 
     games = matches
-    for gametypeid, match in games.items():
-
-        gametype = KartRider.getgameTypes()[gametypeid]
+    for gametype, match in games.items():
 
         for game in match:
             print('게임 : {}, 캐릭터 : {}, 카트 : {}, 맵 : {}, 순위 : {}, 날짜 : {}'
@@ -76,17 +74,16 @@ API KEY는 공개적으로 저장하지 마세요.
     KartRider.set_metadatapath(META_PATH)
     api = KartRider.Api(API_KEY)
 
-    allmatches = api.getAllMatches(limit=10)
+    allmatches = api.getAllMatches(limit=1)
 
-    gametypegames = list(allmatches.values())
-    game = gametypegames[0][0]
+    game = allmatches.mergeValues()[0]
 
-    print('게임 : {} , 채널 이름 : {}, 트랙 이름 : {}'
+    print('게임 : {}, 채널 이름 : {}, 트랙 이름 : {}'
           .format(game.matchType, game.channelName, game.track))
 
     if game.isTeamGame:
         i = 0
-        for players in game.team:
+        for players in game.teams:
             print('{}팀 :'.format(i))
             for player in players:
                 print('닉네임 : {}, 캐릭터 : {}, 카트 : {}, 순위 : {}, 리타이어 여부 : {}'
@@ -121,6 +118,11 @@ Api 클래스
 ==========================
 
 .. automodule:: KartRider.match
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: KartRider.basedata
    :members:
    :undoc-members:
    :show-inheritance:
