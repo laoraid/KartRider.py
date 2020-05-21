@@ -39,10 +39,10 @@ class MergeAbleDict(dict, Mapping[str, T]):
 
     def mergeValues(self) -> list:
         """dict의 리스트 밸류들을 모두 하나로 합칩니다.
-        
+
         게임타입을 key로, 게임 정보의 리스트를 value 로 가지는 dict에서
         게임타입을 무시하고게임 정보의 리스트를 합쳐 1차원 리스트로 반환합니다.
-        
+
 
         :return: 게임 정보의 리스트
         :rtype: list
