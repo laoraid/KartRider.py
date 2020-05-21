@@ -58,9 +58,7 @@ API KEY는 공개적으로 저장하지 마세요.
     matches = api.user(nickname).getMatches(limit=10)
 
     games = matches
-    for gametypeid, match in games.items():
-
-        gametype = KartRider.getgameTypes()[gametypeid]
+    for gametype, match in games.items():
 
         for game in match:
             print('게임 : {}, 캐릭터 : {}, 카트 : {}, 맵 : {}, 순위 : {}, 날짜 : {}'
@@ -70,7 +68,6 @@ API KEY는 공개적으로 저장하지 마세요.
 가장 최근 매치의 상세 정보 불러오기
 ====================================
 .. code-block:: python
-
     import KartRider
 
     KartRider.set_metadatapath(META_PATH)
@@ -78,15 +75,14 @@ API KEY는 공개적으로 저장하지 마세요.
 
     allmatches = api.getAllMatches(limit=10)
 
-    gametypegames = list(allmatches.values())
-    game = gametypegames[0][0]
+    game = allmatches.mergeValues()[0]
 
-    print('게임 : {} , 채널 이름 : {}, 트랙 이름 : {}'
+    print('게임 : {}, 채널 이름 : {}, 트랙 이름 : {}'
           .format(game.matchType, game.channelName, game.track))
 
     if game.isTeamGame:
         i = 0
-        for players in game.team:
+        for players in game.teams:
             print('{}팀 :'.format(i))
             for player in players:
                 print('닉네임 : {}, 캐릭터 : {}, 카트 : {}, 순위 : {}, 리타이어 여부 : {}'
