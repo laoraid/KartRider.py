@@ -50,8 +50,11 @@ class MergeAbleDict(dict, Mapping[str, T]):
         length = sum(len(x) for x in self.values())
         li = [None] * length
 
+        i = 0
+
         for v in self.values():
-            for i, rr in enumerate(v):
+            for rr in v:
                 li[i] = rr
+                i += 1
 
         return li

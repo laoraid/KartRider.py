@@ -46,3 +46,12 @@ def test_isid():
     for k, v in zip(keys, values):
         assert utils._isId(k)
         assert not utils._isId(v)
+
+
+def test_mergedict():
+    from KartRider.basedata import MergeAbleDict
+
+    mdict = MergeAbleDict(abc=['a', 'b', 'c'], wegh=['d', 'e'],
+                          wegweg=['f', 'g', 'h', 'i'])
+
+    assert ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'] == mdict.mergeValues()
