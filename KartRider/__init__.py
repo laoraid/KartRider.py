@@ -4,10 +4,18 @@ from .apiwrapper import (
 )
 
 from .metadata import (
-    set_metadatapath, getCharacters, getflyingPets,
-    getgameTypes, getKarts, getPets, getTracks, getImagePath)
+    set_metadatapath, getCharactersDict, getflyingPetsDict,
+    getgameTypesDict, getKartsDict, getPetsDict, getTracksDict, getImagePath,
+    getCharacterName, getCharacterId, getFlyingPetId, getFlyingPetName,
+    getGameTypeId, getGameTypeName, getKartId, getKartName, getPetId,
+    getPetName, getTrackId, getTrackName)
 
 __all__ = ['Api', 'TooManyRequest', 'ForbiddenToken',
            'InvalidToken', 'NotFound', 'UnknownStatusCode',
-           'set_metadatapath', 'getCharacters', 'getflyingPets',
-           'getgameTypes', 'getKarts', 'getPets', 'getTracks', 'getImagePath']
+           'set_metadatapath', 'getCharactersDict', 'getflyingPetsDict',
+           'getgameTypesDict', 'getKartsDict', 'getPetsDict',
+           'getTracksDict', 'getImagePath', 'getCharacterName',
+           'getCharacterId', 'getFlyingPetId', 'getFlyingPetName',
+           'getGameTypeId', 'getGameTypeName', 'getKartId',
+           'getKartName', 'getPetId', 'getPetName', 'getTrackId',
+           'getTrackName']

@@ -29,9 +29,9 @@ def test_user():
 
 
 def test_isid():
-    c = metadata.getCharacters()
-    f = metadata.getflyingPets()
-    t = metadata.getTracks()
+    c = metadata.getCharactersDict()
+    f = metadata.getflyingPetsDict()
+    t = metadata.getTracksDict()
 
     keys = []
     keys.extend(c.keys())
