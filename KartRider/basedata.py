@@ -1,4 +1,4 @@
-from typing import TypeVar, Mapping
+from typing import TypeVar, Mapping, Iterator
 
 
 class _BaseData(object):
@@ -37,24 +37,15 @@ class MergeAbleDict(dict, Mapping[str, T]):
     def __init__(self, *args, **kwargs):
         super(MergeAbleDict, self).__init__(*args, **kwargs)
 
-    def mergeValues(self) -> list:
-        """dict의 리스트 밸류들을 모두 하나로 합칩니다.
+    def mergeValues(self) -> Iterator[T]:
+        """dict의 리스트 밸류들을 순회하는 제너레이터입니다.
 
         게임타입을 key로, 게임 정보의 리스트를 value 로 가지는 dict에서
-        게임타입을 무시하고게임 정보의 리스트를 합쳐 1차원 리스트로 반환합니다.
+        게임타입을 무시하고 게임 정보의 리스트를 합쳐 순회합니다.
 
-
-        :return: 게임 정보의 리스트
-        :rtype: list
+        :yield: :class:`KartRider.match.MatchDetail` 또는
+            :class:`KartRider.match.MatchInfo`
+        :rtype: Iterator[T]
         """
-        length = sum(len(x) for x in self.values())
-        li = [None] * length
-
-        i = 0
-
         for v in self.values():
-            for rr in v:
-                li[i] = rr
-                i += 1
-
-        return li
+            yield from v

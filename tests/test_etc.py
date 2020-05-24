@@ -51,7 +51,9 @@ def test_isid():
 def test_mergedict():
     from KartRider.basedata import MergeAbleDict
 
+    tc = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
+
     mdict = MergeAbleDict(abc=['a', 'b', 'c'], wegh=['d', 'e'],
                           wegweg=['f', 'g', 'h', 'i'])
 
-    assert ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'] == mdict.mergeValues()
+    assert tc == list(mdict.mergeValues())

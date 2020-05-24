@@ -78,10 +78,10 @@ API KEY는 공개적으로 저장하지 마세요.
 
     allmatches = api.getAllMatches(limit=1)
 
-    game = allmatches.mergeValues()[0]
+    game = list(allmatches.mergeValues())[0]
 
     print('게임 : {}, 채널 이름 : {}, 트랙 이름 : {}'
-          .format(game.matchType, game.channelName, game.track))
+        .format(game.matchType, game.channelName, game.track))
 
     if game.isTeamGame:
         i = 0
@@ -89,15 +89,15 @@ API KEY는 공개적으로 저장하지 마세요.
             print('{}팀 :'.format(i))
             for player in players:
                 print('닉네임 : {}, 캐릭터 : {}, 카트 : {}, 순위 : {}, 리타이어 여부 : {}'
-                      .format(player.characterName, player.character, player.kart,
-                              player.matchRank, player.matchRetired))
+                    .format(player.characterName, player.character, player.kart,
+                            player.matchRank, player.matchRetired))
             i += 1
 
     else:
         for player in game.players:
                 print('닉네임 : {}, 캐릭터 : {}, 카트 : {}, 순위 : {}, 리타이어 여부 : {}'
-                      .format(player.characterName, player.character, player.kart,
-                              player.matchRank, player.matchRetired))
+                    .format(player.characterName, player.character, player.kart,
+                            player.matchRank, player.matchRetired))
 
 
 ----------------------------
