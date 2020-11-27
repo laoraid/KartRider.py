@@ -1,7 +1,7 @@
 from datetime import datetime
-from typing import Union, List
+from typing import List, Union
+
 from .basedata import _BaseData
-from .metadata import _getname
 from .match import MatchResponse
 
 dtstr = Union[datetime, str]
@@ -99,90 +99,3 @@ class User(_BaseData):
 
         return self._api.getUserMatches(self.accessid, start_date, end_date,
                                         offset, limit, match_types)
-
-
-class Player(_BaseData):
-    """매치 플레이어의 정보를 담고 있는 클래스입니다.
-
-    사용법:
-        >>> all = api.getAllMatches()
-        >>> teamgame = all['스피드 팀전']
-        >>> detail = teamgame[0]
-        >>> player = detail.teams[0][1]
-        >>> player.kart
-        루루 X
-        """
-    accountNo: str  #: 유저 ID(str)
-    characterName: str  #: 유저 닉네임(str)
-    characterId: str  #: 캐릭터 ID(str)
-    flyingPetId: str  #: 플라잉펫 ID(str)
-    kartId: str  #: 카트 ID(str)
-    license: str  #: 구 라이선스(str)
-    matchTime: int  #: 매치 진행 시간(int)
-    partsEngine: str  #:(str)
-    partsHandle: str  #:(str)
-    partsKit: str  #:(str)
-    partsWheel: str  #:(str)
-    petId: str  #: 펫 ID(str)
-    rankinggrade2: str  #: 리뉴얼 라이선스(str)
-
-    def __init__(self, api, **kwargs):
-        changeattrs = {'kart': 'kartId', 'character': 'characterId',
-                       'pet': 'petId', 'flyingPet': 'flyingPetId'}
-        ignoreattrs = ['matchRank', 'matchWin', 'matchRetired']
-        intattrs = ['matchTime']
-        super(Player, self).__init__(
-            api, intattrs, ignoreattrs, changeattrs, **kwargs)
-
-        rank = kwargs['matchRank']
-
-        if rank == '99' or rank == '':
-            self.matchRank = -1  #: 순위, 리타이어는 -1
-            self.matchRetired = True  #: 리타이어 여부
-        elif rank == '1':
-            self.matchRank = 1
-            self.matchRetired = False
-        else:
-            self.matchRank = int(rank)
-            self.matchRetired = False
-
-        if kwargs['matchWin'] == '0':
-            self.matchWin = False  #: 매치 승리 여부
-        else:
-            self.matchWin = True
-
-    @property
-    def kart(self) -> str:
-        """카트 이름
-
-        :raises FileNotFoundError: 메타데이터 경로가 설정되지 않았을때
-        :rtype: str
-        """
-        return _getname('kart', self.kartId)
-
-    @property
-    def pet(self) -> str:
-        """펫 이름
-
-        :raises FileNotFoundError: 메타데이터 경로가 설정되지 않았을때
-        :rtype: str
-        """
-        return _getname('pet', self.petId)
-
-    @property
-    def flyingPet(self) -> str:
-        """플라잉펫 이름
-
-        :raises FileNotFoundError: 메타데이터 경로가 설정되지 않았을때
-        :rtype: str
-        """
-        return _getname('flyingPet', self.flyingPetId)
-
-    @property
-    def character(self) -> str:
-        """캐릭터 이름
-
-        :raises FileNotFoundError: 메타데이터 경로가 설정되지 않았을때
-        :rtype: str
-        """
-        return _getname('character', self.characterId)

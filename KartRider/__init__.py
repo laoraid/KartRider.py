@@ -6,9 +6,9 @@ from .apiwrapper import (  # noqa
 from .user import User  # noqa
 
 from .metadata import (  # noqa
-    set_metadatapath, getCharactersDict, getflyingPetsDict,
-    getgameTypesDict, getKartsDict, getPetsDict, getTracksDict, getImagePath,
-    getCharacterName, getCharacterId, getFlyingPetId, getFlyingPetName,
-    getGameTypeId, getGameTypeName, getKartId, getKartName, getPetId,
-    getPetName, getTrackId, getTrackName,
+    set_metadatapath, getcharactersdict, getflyingpetsdict,
+    getgametypesdict, getkartsdict, getpetsdict, gettracksdict, getimagepath,
+    getcharactername, getcharacterid, getflyingpetid, getflyingpetname,
+    getgametypeid, getgametypename, getkartid, getkartname, getpetid,
+    getpetname, gettrackid, gettrackname,
     download_meta, downmeta_ifnotexist)

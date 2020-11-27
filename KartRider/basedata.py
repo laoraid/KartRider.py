@@ -1,4 +1,4 @@
-from typing import TypeVar, Mapping, Iterator
+from typing import Iterator, Mapping, TypeVar
 
 
 class _BaseData(object):
@@ -16,6 +16,7 @@ class _BaseData(object):
                 changenameattrs = {}
 
             for k, v in kwargs.items():
+                k = k.lower()
                 if k in ignoreattrs:
                     continue
                 elif k in intattrs:
@@ -37,7 +38,7 @@ class MergeAbleDict(dict, Mapping[str, T]):
     def __init__(self, *args, **kwargs):
         super(MergeAbleDict, self).__init__(*args, **kwargs)
 
-    def mergeValues(self) -> Iterator[T]:
+    def mergevalues(self) -> Iterator[T]:
         """dict의 리스트 밸류들을 순회하는 제너레이터입니다.
 
         게임타입을 key로, 게임 정보의 리스트를 value 로 가지는 dict에서

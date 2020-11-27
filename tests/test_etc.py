@@ -29,9 +29,9 @@ def test_user():
 
 
 def test_isid():
-    c = metadata.getCharactersDict()
-    f = metadata.getflyingPetsDict()
-    t = metadata.getTracksDict()
+    c = metadata.getcharactersdict()
+    f = metadata.getflyingpetsdict()
+    t = metadata.gettracksdict()
 
     keys = []
     keys.extend(c.keys())
@@ -56,4 +56,4 @@ def test_mergedict():
     mdict = MergeAbleDict(abc=['a', 'b', 'c'], wegh=['d', 'e'],
                           wegweg=['f', 'g', 'h', 'i'])
 
-    assert tc == list(mdict.mergeValues())
+    assert tc == list(mdict.mergevalues())

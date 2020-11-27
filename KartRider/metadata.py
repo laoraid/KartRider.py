@@ -12,7 +12,6 @@ _path = ""
 def set_metadatapath(path: str):
     """메타데이터의 경로를 설정합니다.
 
-    메타데이터는 python -m KartRider -d [경로] 로 다운로드 받을 수 있습니다.
     메타데이터 경로를 설정하지 않으면 여러 정보(카트, 트랙이름, 펫이름 등)의 실제 이름 확인이 불가능합니다.
 
     :param path: 메타데이터 폴더 경로 문자열
@@ -89,7 +88,7 @@ def _gets(datatype):
     return r
 
 
-def getImagePath(name: str, typename: str) -> str:
+def getimagepath(name: str, typename: str) -> str:
     """메타데이터 이미지의 경로를 가져옵니다.
 
     :param name: 가져올 메타데이터의 이름 또는 Id
@@ -106,47 +105,47 @@ def getImagePath(name: str, typename: str) -> str:
     return path
 
 
-getKartsDict = functools.partial(_gets, 'kart')
+getkartsdict = functools.partial(_gets, 'kart')
 """카트 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.
 
 :rtype: dict
 """
 
 
-getPetsDict = functools.partial(_gets, 'pet')
+getpetsdict = functools.partial(_gets, 'pet')
 """펫 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.
 
 :rtype: dict
 """
 
 
-getTracksDict = functools.partial(_gets, 'track')
+gettracksdict = functools.partial(_gets, 'track')
 """트랙 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.
 
 :rtype: dict
 """
 
-getgameTypesDict = functools.partial(_gets, 'gameType')
+getgametypesdict = functools.partial(_gets, 'gameType')
 """게임 유형 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.
 
 :rtype: dict
 """
 
 
-getflyingPetsDict = functools.partial(_gets, 'flyingPet')
+getflyingpetsdict = functools.partial(_gets, 'flyingPet')
 """플라잉펫 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.
 
 :rtype: dict
 """
 
-getCharactersDict = functools.partial(_gets, 'character')
+getcharactersdict = functools.partial(_gets, 'character')
 """캐릭터 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.
 
 :rtype: dict
 """
 
 
-def getCharacterName(id: str) -> str:
+def getcharactername(id: str) -> str:
     """캐릭터 ID를 받아 이름을 반환합니다.
 
     :param id: 캐릭터 ID
@@ -157,7 +156,7 @@ def getCharacterName(id: str) -> str:
     return _getname('character', id)
 
 
-def getFlyingPetName(id: str) -> str:
+def getflyingpetname(id: str) -> str:
     """플라잉펫 ID를 받아 이름을 반환합니다.
 
     :param id: 플라잉펫 ID
@@ -168,7 +167,7 @@ def getFlyingPetName(id: str) -> str:
     return _getname('flyingPet', id)
 
 
-def getGameTypeName(id: str) -> str:
+def getgametypename(id: str) -> str:
     """게임 타입 ID를 받아 이름을 반환합니다.
 
     :param id: 게임 타입 ID
@@ -179,7 +178,7 @@ def getGameTypeName(id: str) -> str:
     return _getname('gameType', id)
 
 
-def getKartName(id: str) -> str:
+def getkartname(id: str) -> str:
     """카트 ID를 받아 이름을 반환합니다.
 
     :param id: 카트 ID
@@ -190,7 +189,7 @@ def getKartName(id: str) -> str:
     return _getname('kart', id)
 
 
-def getPetName(id: str) -> str:
+def getpetname(id: str) -> str:
     """펫 ID를 받아 이름을 반환합니다.
 
     :param id: 펫 ID
@@ -201,7 +200,7 @@ def getPetName(id: str) -> str:
     return _getname('pet', id)
 
 
-def getTrackName(id: str) -> str:
+def gettrackname(id: str) -> str:
     """트랙 ID를 받아 이름을 반환합니다.
 
     :param id: 트랙 ID
@@ -212,7 +211,7 @@ def getTrackName(id: str) -> str:
     return _getname('track', id)
 
 
-def getCharacterId(name: str) -> str:
+def getcharacterid(name: str) -> str:
     """캐릭터 이름을 받아 ID를 반환합니다.
 
     :param name: 캐릭터 이름
@@ -223,7 +222,7 @@ def getCharacterId(name: str) -> str:
     return _getId('character', name)
 
 
-def getFlyingPetId(name: str) -> str:
+def getflyingpetid(name: str) -> str:
     """플라잉펫 이름을 받아 ID를 반환합니다.
 
     :param name: 플라잉펫 이름
@@ -234,7 +233,7 @@ def getFlyingPetId(name: str) -> str:
     return _getId('flyingPet', name)
 
 
-def getGameTypeId(name: str) -> str:
+def getgametypeid(name: str) -> str:
     """게임 타입 이름을 받아 ID를 반환합니다.
 
     :param name: 게임 타입 이름
@@ -245,7 +244,7 @@ def getGameTypeId(name: str) -> str:
     return _getId('gameType', name)
 
 
-def getKartId(name: str) -> str:
+def getkartid(name: str) -> str:
     """카트 이름을 받아 ID를 반환합니다.
 
     :param name: 카트 이름
@@ -256,7 +255,7 @@ def getKartId(name: str) -> str:
     return _getId('kart', name)
 
 
-def getPetId(name: str) -> str:
+def getpetid(name: str) -> str:
     """펫 이름을 받아 ID를 반환합니다.
 
     :param name: 펫 이름
@@ -267,7 +266,7 @@ def getPetId(name: str) -> str:
     return _getId('pet', name)
 
 
-def getTrackId(name: str) -> str:
+def gettrackid(name: str) -> str:
     """트랙 이름을 받아 ID를 반환합니다.
 
     :param name: 트랙 이름

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>KartRider.py &mdash; KartRider 0.5.1 문서</title>
+  <title>KartRider.py &mdash; KartRider 0.6.0 문서</title>
   
 
   
@@ -215,7 +215,7 @@
     <span class="k">for</span> <span class="n">game</span> <span class="ow">in</span> <span class="n">match</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;게임 : </span><span class="si">{}</span><span class="s1">, 캐릭터 : </span><span class="si">{}</span><span class="s1">, 카트 : </span><span class="si">{}</span><span class="s1">, 맵 : </span><span class="si">{}</span><span class="s1">, 순위 : </span><span class="si">{}</span><span class="s1">, 날짜 : </span><span class="si">{}</span><span class="s1">&#39;</span>
             <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gametype</span><span class="p">,</span><span class="n">game</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">character</span><span class="p">,</span> <span class="n">game</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">kart</span><span class="p">,</span>
-                    <span class="n">game</span><span class="o">.</span><span class="n">track</span><span class="p">,</span> <span class="n">game</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">matchRank</span><span class="p">,</span> <span class="n">game</span><span class="o">.</span><span class="n">startTime</span><span class="p">))</span>
+                    <span class="n">game</span><span class="o">.</span><span class="n">track</span><span class="p">,</span> <span class="n">game</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">matchrank</span><span class="p">,</span> <span class="n">game</span><span class="o">.</span><span class="n">starttime</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -228,26 +228,26 @@
 
 <span class="n">allmatches</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">getAllMatches</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="n">game</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">allmatches</span><span class="o">.</span><span class="n">mergeValues</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">game</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">allmatches</span><span class="o">.</span><span class="n">mergevalues</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;게임 : </span><span class="si">{}</span><span class="s1">, 채널 이름 : </span><span class="si">{}</span><span class="s1">, 트랙 이름 : </span><span class="si">{}</span><span class="s1">&#39;</span>
-    <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">game</span><span class="o">.</span><span class="n">matchType</span><span class="p">,</span> <span class="n">game</span><span class="o">.</span><span class="n">channelName</span><span class="p">,</span> <span class="n">game</span><span class="o">.</span><span class="n">track</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">game</span><span class="o">.</span><span class="n">matchtype</span><span class="p">,</span> <span class="n">game</span><span class="o">.</span><span class="n">channelname</span><span class="p">,</span> <span class="n">game</span><span class="o">.</span><span class="n">track</span><span class="p">))</span>
 
-<span class="k">if</span> <span class="n">game</span><span class="o">.</span><span class="n">isTeamGame</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">game</span><span class="o">.</span><span class="n">isteamgame</span><span class="p">:</span>
     <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">players</span> <span class="ow">in</span> <span class="n">game</span><span class="o">.</span><span class="n">teams</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">팀 :&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
         <span class="k">for</span> <span class="n">player</span> <span class="ow">in</span> <span class="n">players</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;닉네임 : </span><span class="si">{}</span><span class="s1">, 캐릭터 : </span><span class="si">{}</span><span class="s1">, 카트 : </span><span class="si">{}</span><span class="s1">, 순위 : </span><span class="si">{}</span><span class="s1">, 리타이어 여부 : </span><span class="si">{}</span><span class="s1">&#39;</span>
-                <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">characterName</span><span class="p">,</span> <span class="n">player</span><span class="o">.</span><span class="n">character</span><span class="p">,</span> <span class="n">player</span><span class="o">.</span><span class="n">kart</span><span class="p">,</span>
-                        <span class="n">player</span><span class="o">.</span><span class="n">matchRank</span><span class="p">,</span> <span class="n">player</span><span class="o">.</span><span class="n">matchRetired</span><span class="p">))</span>
+                <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">charactername</span><span class="p">,</span> <span class="n">player</span><span class="o">.</span><span class="n">character</span><span class="p">,</span> <span class="n">player</span><span class="o">.</span><span class="n">kart</span><span class="p">,</span>
+                        <span class="n">player</span><span class="o">.</span><span class="n">matchrank</span><span class="p">,</span> <span class="n">player</span><span class="o">.</span><span class="n">matchretired</span><span class="p">))</span>
         <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
 
 <span class="k">else</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">player</span> <span class="ow">in</span> <span class="n">game</span><span class="o">.</span><span class="n">players</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;닉네임 : </span><span class="si">{}</span><span class="s1">, 캐릭터 : </span><span class="si">{}</span><span class="s1">, 카트 : </span><span class="si">{}</span><span class="s1">, 순위 : </span><span class="si">{}</span><span class="s1">, 리타이어 여부 : </span><span class="si">{}</span><span class="s1">&#39;</span>
-                <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">characterName</span><span class="p">,</span> <span class="n">player</span><span class="o">.</span><span class="n">character</span><span class="p">,</span> <span class="n">player</span><span class="o">.</span><span class="n">kart</span><span class="p">,</span>
-                        <span class="n">player</span><span class="o">.</span><span class="n">matchRank</span><span class="p">,</span> <span class="n">player</span><span class="o">.</span><span class="n">matchRetired</span><span class="p">))</span>
+                <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">charactername</span><span class="p">,</span> <span class="n">player</span><span class="o">.</span><span class="n">character</span><span class="p">,</span> <span class="n">player</span><span class="o">.</span><span class="n">kart</span><span class="p">,</span>
+                        <span class="n">player</span><span class="o">.</span><span class="n">matchrank</span><span class="p">,</span> <span class="n">player</span><span class="o">.</span><span class="n">matchretired</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -446,44 +446,44 @@ Api.user(…).getMatches(…) 로도 사용할 수도 있습니다.</p>
 <p>isTeamGame 이 True 일시 teams를, false 일시 players 를 멤버로 갖습니다.</p>
 </div>
 <dl class="attribute">
-<dt id="KartRider.match.MatchDetail.channelName">
-<code class="sig-name descname">channelName</code><a class="headerlink" href="#KartRider.match.MatchDetail.channelName" title="정의 주소">¶</a></dt>
+<dt id="KartRider.match.MatchDetail.channelname">
+<code class="sig-name descname">channelname</code><a class="headerlink" href="#KartRider.match.MatchDetail.channelname" title="정의 주소">¶</a></dt>
 <dd><p>채널 명(str)</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="KartRider.match.MatchDetail.endTime">
-<code class="sig-name descname">endTime</code><a class="headerlink" href="#KartRider.match.MatchDetail.endTime" title="정의 주소">¶</a></dt>
+<dt id="KartRider.match.MatchDetail.endtime">
+<code class="sig-name descname">endtime</code><a class="headerlink" href="#KartRider.match.MatchDetail.endtime" title="정의 주소">¶</a></dt>
 <dd><p>게임 종료 시간(datetime)</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="KartRider.match.MatchDetail.gameSpeed">
-<code class="sig-name descname">gameSpeed</code><a class="headerlink" href="#KartRider.match.MatchDetail.gameSpeed" title="정의 주소">¶</a></dt>
+<dt id="KartRider.match.MatchDetail.gamespeed">
+<code class="sig-name descname">gamespeed</code><a class="headerlink" href="#KartRider.match.MatchDetail.gamespeed" title="정의 주소">¶</a></dt>
 <dd><p>게임 스피드 모드(int)</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="KartRider.match.MatchDetail.isTeamGame">
-<code class="sig-name descname">isTeamGame</code><a class="headerlink" href="#KartRider.match.MatchDetail.isTeamGame" title="정의 주소">¶</a></dt>
+<dt id="KartRider.match.MatchDetail.isteamgame">
+<code class="sig-name descname">isteamgame</code><a class="headerlink" href="#KartRider.match.MatchDetail.isteamgame" title="정의 주소">¶</a></dt>
 <dd><p>팀 게임 여부(bool)</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="KartRider.match.MatchDetail.matchId">
-<code class="sig-name descname">matchId</code><a class="headerlink" href="#KartRider.match.MatchDetail.matchId" title="정의 주소">¶</a></dt>
+<dt id="KartRider.match.MatchDetail.matchid">
+<code class="sig-name descname">matchid</code><a class="headerlink" href="#KartRider.match.MatchDetail.matchid" title="정의 주소">¶</a></dt>
 <dd><p>매치 ID(str)</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="KartRider.match.MatchDetail.matchResult">
-<code class="sig-name descname">matchResult</code><a class="headerlink" href="#KartRider.match.MatchDetail.matchResult" title="정의 주소">¶</a></dt>
+<dt id="KartRider.match.MatchDetail.matchresult">
+<code class="sig-name descname">matchresult</code><a class="headerlink" href="#KartRider.match.MatchDetail.matchresult" title="정의 주소">¶</a></dt>
 <dd><p>매치 결과(str)</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="KartRider.match.MatchDetail.matchType">
-<em class="property">property </em><code class="sig-name descname">matchType</code><a class="headerlink" href="#KartRider.match.MatchDetail.matchType" title="정의 주소">¶</a></dt>
+<dt id="KartRider.match.MatchDetail.matchtype">
+<em class="property">property </em><code class="sig-name descname">matchtype</code><a class="headerlink" href="#KartRider.match.MatchDetail.matchtype" title="정의 주소">¶</a></dt>
 <dd><p>매치 종류 이름</p>
 <dl class="field-list simple">
 <dt class="field-odd">예외</dt>
@@ -496,26 +496,26 @@ Api.user(…).getMatches(…) 로도 사용할 수도 있습니다.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="KartRider.match.MatchDetail.matchTypeId">
-<code class="sig-name descname">matchTypeId</code><a class="headerlink" href="#KartRider.match.MatchDetail.matchTypeId" title="정의 주소">¶</a></dt>
+<dt id="KartRider.match.MatchDetail.matchtypeid">
+<code class="sig-name descname">matchtypeid</code><a class="headerlink" href="#KartRider.match.MatchDetail.matchtypeid" title="정의 주소">¶</a></dt>
 <dd><p>매치 종류 ID(str)</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="KartRider.match.MatchDetail.playTime">
-<code class="sig-name descname">playTime</code><a class="headerlink" href="#KartRider.match.MatchDetail.playTime" title="정의 주소">¶</a></dt>
-<dd><p>게임 진행 시간(int)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="KartRider.match.MatchDetail.players">
 <code class="sig-name descname">players</code><a class="headerlink" href="#KartRider.match.MatchDetail.players" title="정의 주소">¶</a></dt>
-<dd><p>참여 플레이어 정보 (list(<a class="reference internal" href="#KartRider.user.Player" title="KartRider.user.Player"><code class="xref py py-class docutils literal notranslate"><span class="pre">KartRider.user.Player</span></code></a>))</p>
+<dd><p>참여 플레이어 정보 (list(<a class="reference internal" href="#KartRider.match.Player" title="KartRider.match.Player"><code class="xref py py-class docutils literal notranslate"><span class="pre">Player</span></code></a>))</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="KartRider.match.MatchDetail.startTime">
-<code class="sig-name descname">startTime</code><a class="headerlink" href="#KartRider.match.MatchDetail.startTime" title="정의 주소">¶</a></dt>
+<dt id="KartRider.match.MatchDetail.playtime">
+<code class="sig-name descname">playtime</code><a class="headerlink" href="#KartRider.match.MatchDetail.playtime" title="정의 주소">¶</a></dt>
+<dd><p>게임 진행 시간(int)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KartRider.match.MatchDetail.starttime">
+<code class="sig-name descname">starttime</code><a class="headerlink" href="#KartRider.match.MatchDetail.starttime" title="정의 주소">¶</a></dt>
 <dd><p>게임 시작 시간(datetime)</p>
 </dd></dl>
 
@@ -540,8 +540,8 @@ Api.user(…).getMatches(…) 로도 사용할 수도 있습니다.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="KartRider.match.MatchDetail.trackId">
-<code class="sig-name descname">trackId</code><a class="headerlink" href="#KartRider.match.MatchDetail.trackId" title="정의 주소">¶</a></dt>
+<dt id="KartRider.match.MatchDetail.trackid">
+<code class="sig-name descname">trackid</code><a class="headerlink" href="#KartRider.match.MatchDetail.trackid" title="정의 주소">¶</a></dt>
 <dd><p>트랙 ID(str)</p>
 </dd></dl>
 
@@ -554,7 +554,7 @@ Api.user(…).getMatches(…) 로도 사용할 수도 있습니다.</p>
 <p>매치 정보를 담고 있는 클래스입니다.</p>
 <dl>
 <dt>사용법:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mr</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">user</span><span class="p">(</span><span class="s1">&#39;닉네임&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getMatches</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mi</span> <span class="o">=</span> <span class="n">mr</span><span class="p">[</span><span class="s1">&#39;아이템 팀전&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mi</span> <span class="o">=</span> <span class="n">mr</span><span class="p">[</span><span class="s1">&#39;아이템 팀전&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># 검색된 매치 중 아이템 팀전의 0번째 매치 정보</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mi</span><span class="o">.</span><span class="n">character</span>
 <span class="go">황금망토 배찌</span>
 </pre></div>
@@ -562,14 +562,14 @@ Api.user(…).getMatches(…) 로도 사용할 수도 있습니다.</p>
 </dd>
 </dl>
 <dl class="attribute">
-<dt id="KartRider.match.MatchInfo.accountNo">
-<code class="sig-name descname">accountNo</code><a class="headerlink" href="#KartRider.match.MatchInfo.accountNo" title="정의 주소">¶</a></dt>
+<dt id="KartRider.match.MatchInfo.accountno">
+<code class="sig-name descname">accountno</code><a class="headerlink" href="#KartRider.match.MatchInfo.accountno" title="정의 주소">¶</a></dt>
 <dd><p>계정 고유 식별자(str)</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="KartRider.match.MatchInfo.channelName">
-<code class="sig-name descname">channelName</code><a class="headerlink" href="#KartRider.match.MatchInfo.channelName" title="정의 주소">¶</a></dt>
+<dt id="KartRider.match.MatchInfo.channelname">
+<code class="sig-name descname">channelname</code><a class="headerlink" href="#KartRider.match.MatchInfo.channelname" title="정의 주소">¶</a></dt>
 <dd><p>채널 이름(str)</p>
 </dd></dl>
 
@@ -588,8 +588,8 @@ Api.user(…).getMatches(…) 로도 사용할 수도 있습니다.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="KartRider.match.MatchInfo.characterId">
-<code class="sig-name descname">characterId</code><a class="headerlink" href="#KartRider.match.MatchInfo.characterId" title="정의 주소">¶</a></dt>
+<dt id="KartRider.match.MatchInfo.characterid">
+<code class="sig-name descname">characterid</code><a class="headerlink" href="#KartRider.match.MatchInfo.characterid" title="정의 주소">¶</a></dt>
 <dd><p>캐릭터 ID(str)</p>
 </dd></dl>
 
@@ -600,14 +600,14 @@ Api.user(…).getMatches(…) 로도 사용할 수도 있습니다.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="KartRider.match.MatchInfo.endTime">
-<code class="sig-name descname">endTime</code><a class="headerlink" href="#KartRider.match.MatchInfo.endTime" title="정의 주소">¶</a></dt>
+<dt id="KartRider.match.MatchInfo.endtime">
+<code class="sig-name descname">endtime</code><a class="headerlink" href="#KartRider.match.MatchInfo.endtime" title="정의 주소">¶</a></dt>
 <dd><p>게임 종료 시간(UTC)(datetime)</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="KartRider.match.MatchInfo.matchType">
-<em class="property">property </em><code class="sig-name descname">matchType</code><a class="headerlink" href="#KartRider.match.MatchInfo.matchType" title="정의 주소">¶</a></dt>
+<dt id="KartRider.match.MatchInfo.matchtype">
+<em class="property">property </em><code class="sig-name descname">matchtype</code><a class="headerlink" href="#KartRider.match.MatchInfo.matchtype" title="정의 주소">¶</a></dt>
 <dd><p>매치 종류 이름</p>
 <dl class="field-list simple">
 <dt class="field-odd">예외</dt>
@@ -620,32 +620,32 @@ Api.user(…).getMatches(…) 로도 사용할 수도 있습니다.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="KartRider.match.MatchInfo.matchTypeId">
-<code class="sig-name descname">matchTypeId</code><a class="headerlink" href="#KartRider.match.MatchInfo.matchTypeId" title="정의 주소">¶</a></dt>
+<dt id="KartRider.match.MatchInfo.matchtypeid">
+<code class="sig-name descname">matchtypeid</code><a class="headerlink" href="#KartRider.match.MatchInfo.matchtypeid" title="정의 주소">¶</a></dt>
 <dd><p>매치 종류 ID(str)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="KartRider.match.MatchInfo.player">
 <code class="sig-name descname">player</code><a class="headerlink" href="#KartRider.match.MatchInfo.player" title="정의 주소">¶</a></dt>
-<dd><p>참여 유저 정보 (<a class="reference internal" href="#KartRider.user.Player" title="KartRider.user.Player"><code class="xref py py-class docutils literal notranslate"><span class="pre">KartRider.user.Player</span></code></a>)</p>
+<dd><p>참여 유저 정보 (<a class="reference internal" href="#KartRider.match.Player" title="KartRider.match.Player"><code class="xref py py-class docutils literal notranslate"><span class="pre">Player</span></code></a>)</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="KartRider.match.MatchInfo.playerCount">
-<code class="sig-name descname">playerCount</code><a class="headerlink" href="#KartRider.match.MatchInfo.playerCount" title="정의 주소">¶</a></dt>
+<dt id="KartRider.match.MatchInfo.playercount">
+<code class="sig-name descname">playercount</code><a class="headerlink" href="#KartRider.match.MatchInfo.playercount" title="정의 주소">¶</a></dt>
 <dd><p>참여 유저 수(int)</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="KartRider.match.MatchInfo.startTime">
-<code class="sig-name descname">startTime</code><a class="headerlink" href="#KartRider.match.MatchInfo.startTime" title="정의 주소">¶</a></dt>
+<dt id="KartRider.match.MatchInfo.starttime">
+<code class="sig-name descname">starttime</code><a class="headerlink" href="#KartRider.match.MatchInfo.starttime" title="정의 주소">¶</a></dt>
 <dd><p>게임 시작 시간(UTC)(datetime)</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="KartRider.match.MatchInfo.teamId">
-<code class="sig-name descname">teamId</code><a class="headerlink" href="#KartRider.match.MatchInfo.teamId" title="정의 주소">¶</a></dt>
+<dt id="KartRider.match.MatchInfo.teamid">
+<code class="sig-name descname">teamid</code><a class="headerlink" href="#KartRider.match.MatchInfo.teamid" title="정의 주소">¶</a></dt>
 <dd><p>팀 ID(str)</p>
 </dd></dl>
 
@@ -664,8 +664,8 @@ Api.user(…).getMatches(…) 로도 사용할 수도 있습니다.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="KartRider.match.MatchInfo.trackId">
-<code class="sig-name descname">trackId</code><a class="headerlink" href="#KartRider.match.MatchInfo.trackId" title="정의 주소">¶</a></dt>
+<dt id="KartRider.match.MatchInfo.trackid">
+<code class="sig-name descname">trackid</code><a class="headerlink" href="#KartRider.match.MatchInfo.trackid" title="정의 주소">¶</a></dt>
 <dd><p>트랙 ID(str)</p>
 </dd></dl>
 
@@ -680,7 +680,7 @@ Api.user(…).getMatches(…) 로도 사용할 수도 있습니다.</p>
 <a class="reference internal" href="#KartRider.match.MatchInfo" title="KartRider.match.MatchInfo"><code class="xref py py-class docutils literal notranslate"><span class="pre">MatchInfo</span></code></a> 의 리스트를 값으로 가지는 dict와 같습니다.</p>
 <dl>
 <dt>사용법:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mr</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">user</span><span class="p">(</span><span class="s1">&#39;닉네임&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getMatches</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mr</span><span class="p">[</span><span class="s1">&#39;아이템 팀전&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">playerCount</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mr</span><span class="p">[</span><span class="s1">&#39;아이템 팀전&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">playerCount</span> <span class="c1"># 검색된 매치 중 아이템 팀전의 0번째 매치 정보의 플레이어 카운트</span>
 <span class="go">6</span>
 </pre></div>
 </div>
@@ -695,13 +695,183 @@ Api.user(…).getMatches(…) 로도 사용할 수도 있습니다.</p>
 </dd></dl>
 
 <dl class="class">
-<dt id="KartRider.match.Team">
-<em class="property">class </em><code class="sig-prename descclassname">KartRider.match.</code><code class="sig-name descname">Team</code><span class="sig-paren">(</span><em class="sig-param">api</em>, <em class="sig-param">teamId</em>, <em class="sig-param">players</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.match.Team" title="정의 주소">¶</a></dt>
-<dd><p>기반 클래스: <code class="xref py py-class docutils literal notranslate"><span class="pre">typing.List</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></p>
-<p><a class="reference internal" href="#KartRider.user.Player" title="KartRider.user.Player"><code class="xref py py-class docutils literal notranslate"><span class="pre">KartRider.user.Player</span></code></a> 의 List입니다.</p>
+<dt id="KartRider.match.Player">
+<em class="property">class </em><code class="sig-prename descclassname">KartRider.match.</code><code class="sig-name descname">Player</code><span class="sig-paren">(</span><em class="sig-param">api</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.match.Player" title="정의 주소">¶</a></dt>
+<dd><p>기반 클래스: <code class="xref py py-class docutils literal notranslate"><span class="pre">KartRider.basedata._BaseData</span></code></p>
+<p>매치 플레이어의 정보를 담고 있는 클래스입니다.</p>
+<dl>
+<dt>사용법:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">all</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">getAllMatches</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">teamgame</span> <span class="o">=</span> <span class="nb">all</span><span class="p">[</span><span class="s1">&#39;스피드 팀전&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">detail</span> <span class="o">=</span> <span class="n">teamgame</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">player</span> <span class="o">=</span> <span class="n">detail</span><span class="o">.</span><span class="n">teams</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">player</span><span class="o">.</span><span class="n">kart</span>
+<span class="go">루루 X</span>
+</pre></div>
+</div>
+</dd>
+</dl>
 <dl class="attribute">
-<dt id="KartRider.match.Team.teamId">
-<code class="sig-name descname">teamId</code><a class="headerlink" href="#KartRider.match.Team.teamId" title="정의 주소">¶</a></dt>
+<dt id="KartRider.match.Player.accountno">
+<code class="sig-name descname">accountno</code><a class="headerlink" href="#KartRider.match.Player.accountno" title="정의 주소">¶</a></dt>
+<dd><p>유저 ID(str)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="KartRider.match.Player.character">
+<em class="property">property </em><code class="sig-name descname">character</code><a class="headerlink" href="#KartRider.match.Player.character" title="정의 주소">¶</a></dt>
+<dd><p>캐릭터 이름</p>
+<dl class="field-list simple">
+<dt class="field-odd">예외</dt>
+<dd class="field-odd"><p><strong>FileNotFoundError</strong> – 메타데이터 경로가 설정되지 않았을때</p>
+</dd>
+<dt class="field-even">반환 형식</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KartRider.match.Player.characterid">
+<code class="sig-name descname">characterid</code><a class="headerlink" href="#KartRider.match.Player.characterid" title="정의 주소">¶</a></dt>
+<dd><p>캐릭터 ID(str)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KartRider.match.Player.charactername">
+<code class="sig-name descname">charactername</code><a class="headerlink" href="#KartRider.match.Player.charactername" title="정의 주소">¶</a></dt>
+<dd><p>유저 닉네임(str)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KartRider.match.Player.flyingPetid">
+<code class="sig-name descname">flyingPetid</code><a class="headerlink" href="#KartRider.match.Player.flyingPetid" title="정의 주소">¶</a></dt>
+<dd><p>플라잉펫 ID(str)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="KartRider.match.Player.flyingpet">
+<em class="property">property </em><code class="sig-name descname">flyingpet</code><a class="headerlink" href="#KartRider.match.Player.flyingpet" title="정의 주소">¶</a></dt>
+<dd><p>플라잉펫 이름</p>
+<dl class="field-list simple">
+<dt class="field-odd">예외</dt>
+<dd class="field-odd"><p><strong>FileNotFoundError</strong> – 메타데이터 경로가 설정되지 않았을때</p>
+</dd>
+<dt class="field-even">반환 형식</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="KartRider.match.Player.kart">
+<em class="property">property </em><code class="sig-name descname">kart</code><a class="headerlink" href="#KartRider.match.Player.kart" title="정의 주소">¶</a></dt>
+<dd><p>카트 이름</p>
+<dl class="field-list simple">
+<dt class="field-odd">예외</dt>
+<dd class="field-odd"><p><strong>FileNotFoundError</strong> – 메타데이터 경로가 설정되지 않았을때</p>
+</dd>
+<dt class="field-even">반환 형식</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KartRider.match.Player.kartid">
+<code class="sig-name descname">kartid</code><a class="headerlink" href="#KartRider.match.Player.kartid" title="정의 주소">¶</a></dt>
+<dd><p>카트 ID(str)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KartRider.match.Player.license">
+<code class="sig-name descname">license</code><a class="headerlink" href="#KartRider.match.Player.license" title="정의 주소">¶</a></dt>
+<dd><p>구 라이선스(str)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KartRider.match.Player.matchrank">
+<code class="sig-name descname">matchrank</code><a class="headerlink" href="#KartRider.match.Player.matchrank" title="정의 주소">¶</a></dt>
+<dd><p>순위, 리타이어는 -1</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KartRider.match.Player.matchretired">
+<code class="sig-name descname">matchretired</code><a class="headerlink" href="#KartRider.match.Player.matchretired" title="정의 주소">¶</a></dt>
+<dd><p>리타이어 여부</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KartRider.match.Player.matchtime">
+<code class="sig-name descname">matchtime</code><a class="headerlink" href="#KartRider.match.Player.matchtime" title="정의 주소">¶</a></dt>
+<dd><p>매치 진행 시간(int)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KartRider.match.Player.matchwin">
+<code class="sig-name descname">matchwin</code><a class="headerlink" href="#KartRider.match.Player.matchwin" title="정의 주소">¶</a></dt>
+<dd><p>매치 승리 여부</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KartRider.match.Player.partsengine">
+<code class="sig-name descname">partsengine</code><a class="headerlink" href="#KartRider.match.Player.partsengine" title="정의 주소">¶</a></dt>
+<dd><p>카트바디의 엔진 파츠 (9 엔진 이하)(str)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KartRider.match.Player.partshandle">
+<code class="sig-name descname">partshandle</code><a class="headerlink" href="#KartRider.match.Player.partshandle" title="정의 주소">¶</a></dt>
+<dd><p>카트바디의 핸들 파츠 (9 엔진 이하)(str)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KartRider.match.Player.partskit">
+<code class="sig-name descname">partskit</code><a class="headerlink" href="#KartRider.match.Player.partskit" title="정의 주소">¶</a></dt>
+<dd><p>카트바디의 킷 파츠 (9 엔진 이하)(str)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KartRider.match.Player.partswheel">
+<code class="sig-name descname">partswheel</code><a class="headerlink" href="#KartRider.match.Player.partswheel" title="정의 주소">¶</a></dt>
+<dd><p>카트바디의 휠 파츠 (9 엔진 이하)(str)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="KartRider.match.Player.pet">
+<em class="property">property </em><code class="sig-name descname">pet</code><a class="headerlink" href="#KartRider.match.Player.pet" title="정의 주소">¶</a></dt>
+<dd><p>펫 이름</p>
+<dl class="field-list simple">
+<dt class="field-odd">예외</dt>
+<dd class="field-odd"><p><strong>FileNotFoundError</strong> – 메타데이터 경로가 설정되지 않았을때</p>
+</dd>
+<dt class="field-even">반환 형식</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KartRider.match.Player.petid">
+<code class="sig-name descname">petid</code><a class="headerlink" href="#KartRider.match.Player.petid" title="정의 주소">¶</a></dt>
+<dd><p>펫 ID(str)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KartRider.match.Player.rankinggrade2">
+<code class="sig-name descname">rankinggrade2</code><a class="headerlink" href="#KartRider.match.Player.rankinggrade2" title="정의 주소">¶</a></dt>
+<dd><p>리뉴얼 라이선스(str)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="KartRider.match.Team">
+<em class="property">class </em><code class="sig-prename descclassname">KartRider.match.</code><code class="sig-name descname">Team</code><span class="sig-paren">(</span><em class="sig-param">api</em>, <em class="sig-param">teamid</em>, <em class="sig-param">players</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.match.Team" title="정의 주소">¶</a></dt>
+<dd><p>기반 클래스: <code class="xref py py-class docutils literal notranslate"><span class="pre">typing.List</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></p>
+<p><a class="reference internal" href="#KartRider.match.Player" title="KartRider.match.Player"><code class="xref py py-class docutils literal notranslate"><span class="pre">Player</span></code></a> 의 List입니다.</p>
+<dl class="attribute">
+<dt id="KartRider.match.Team.teamid">
+<code class="sig-name descname">teamid</code><a class="headerlink" href="#KartRider.match.Team.teamid" title="정의 주소">¶</a></dt>
 <dd><p>팀 ID(str)</p>
 </dd></dl>
 
@@ -712,8 +882,8 @@ Api.user(…).getMatches(…) 로도 사용할 수도 있습니다.</p>
 <em class="property">class </em><code class="sig-prename descclassname">KartRider.basedata.</code><code class="sig-name descname">MergeAbleDict</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.basedata.MergeAbleDict" title="정의 주소">¶</a></dt>
 <dd><p>기반 클래스: <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">typing.Mapping</span></code></p>
 <dl class="method">
-<dt id="KartRider.basedata.MergeAbleDict.mergeValues">
-<code class="sig-name descname">mergeValues</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.basedata.MergeAbleDict.mergeValues" title="정의 주소">¶</a></dt>
+<dt id="KartRider.basedata.MergeAbleDict.mergevalues">
+<code class="sig-name descname">mergevalues</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.basedata.MergeAbleDict.mergevalues" title="정의 주소">¶</a></dt>
 <dd><p>dict의 리스트 밸류들을 순회하는 제너레이터입니다.</p>
 <p>게임타입을 key로, 게임 정보의 리스트를 value 로 가지는 dict에서
 게임타입을 무시하고 게임 정보의 리스트를 합쳐 순회합니다.</p>
@@ -733,176 +903,6 @@ Api.user(…).getMatches(…) 로도 사용할 수도 있습니다.</p>
 </div>
 <div class="section" id="module-KartRider.user">
 <span id="id8"></span><h3>유저 데이터<a class="headerlink" href="#module-KartRider.user" title="제목 주소">¶</a></h3>
-<dl class="class">
-<dt id="KartRider.user.Player">
-<em class="property">class </em><code class="sig-prename descclassname">KartRider.user.</code><code class="sig-name descname">Player</code><span class="sig-paren">(</span><em class="sig-param">api</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.user.Player" title="정의 주소">¶</a></dt>
-<dd><p>기반 클래스: <code class="xref py py-class docutils literal notranslate"><span class="pre">KartRider.basedata._BaseData</span></code></p>
-<p>매치 플레이어의 정보를 담고 있는 클래스입니다.</p>
-<dl>
-<dt>사용법:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">all</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">getAllMatches</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">teamgame</span> <span class="o">=</span> <span class="nb">all</span><span class="p">[</span><span class="s1">&#39;스피드 팀전&#39;</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">detail</span> <span class="o">=</span> <span class="n">teamgame</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">player</span> <span class="o">=</span> <span class="n">detail</span><span class="o">.</span><span class="n">teams</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">player</span><span class="o">.</span><span class="n">kart</span>
-<span class="go">루루 X</span>
-</pre></div>
-</div>
-</dd>
-</dl>
-<dl class="attribute">
-<dt id="KartRider.user.Player.accountNo">
-<code class="sig-name descname">accountNo</code><a class="headerlink" href="#KartRider.user.Player.accountNo" title="정의 주소">¶</a></dt>
-<dd><p>유저 ID(str)</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="KartRider.user.Player.character">
-<em class="property">property </em><code class="sig-name descname">character</code><a class="headerlink" href="#KartRider.user.Player.character" title="정의 주소">¶</a></dt>
-<dd><p>캐릭터 이름</p>
-<dl class="field-list simple">
-<dt class="field-odd">예외</dt>
-<dd class="field-odd"><p><strong>FileNotFoundError</strong> – 메타데이터 경로가 설정되지 않았을때</p>
-</dd>
-<dt class="field-even">반환 형식</dt>
-<dd class="field-even"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="KartRider.user.Player.characterId">
-<code class="sig-name descname">characterId</code><a class="headerlink" href="#KartRider.user.Player.characterId" title="정의 주소">¶</a></dt>
-<dd><p>캐릭터 ID(str)</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="KartRider.user.Player.characterName">
-<code class="sig-name descname">characterName</code><a class="headerlink" href="#KartRider.user.Player.characterName" title="정의 주소">¶</a></dt>
-<dd><p>유저 닉네임(str)</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="KartRider.user.Player.flyingPet">
-<em class="property">property </em><code class="sig-name descname">flyingPet</code><a class="headerlink" href="#KartRider.user.Player.flyingPet" title="정의 주소">¶</a></dt>
-<dd><p>플라잉펫 이름</p>
-<dl class="field-list simple">
-<dt class="field-odd">예외</dt>
-<dd class="field-odd"><p><strong>FileNotFoundError</strong> – 메타데이터 경로가 설정되지 않았을때</p>
-</dd>
-<dt class="field-even">반환 형식</dt>
-<dd class="field-even"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="KartRider.user.Player.flyingPetId">
-<code class="sig-name descname">flyingPetId</code><a class="headerlink" href="#KartRider.user.Player.flyingPetId" title="정의 주소">¶</a></dt>
-<dd><p>플라잉펫 ID(str)</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="KartRider.user.Player.kart">
-<em class="property">property </em><code class="sig-name descname">kart</code><a class="headerlink" href="#KartRider.user.Player.kart" title="정의 주소">¶</a></dt>
-<dd><p>카트 이름</p>
-<dl class="field-list simple">
-<dt class="field-odd">예외</dt>
-<dd class="field-odd"><p><strong>FileNotFoundError</strong> – 메타데이터 경로가 설정되지 않았을때</p>
-</dd>
-<dt class="field-even">반환 형식</dt>
-<dd class="field-even"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="KartRider.user.Player.kartId">
-<code class="sig-name descname">kartId</code><a class="headerlink" href="#KartRider.user.Player.kartId" title="정의 주소">¶</a></dt>
-<dd><p>카트 ID(str)</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="KartRider.user.Player.license">
-<code class="sig-name descname">license</code><a class="headerlink" href="#KartRider.user.Player.license" title="정의 주소">¶</a></dt>
-<dd><p>구 라이선스(str)</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="KartRider.user.Player.matchRank">
-<code class="sig-name descname">matchRank</code><a class="headerlink" href="#KartRider.user.Player.matchRank" title="정의 주소">¶</a></dt>
-<dd><p>순위, 리타이어는 -1</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="KartRider.user.Player.matchRetired">
-<code class="sig-name descname">matchRetired</code><a class="headerlink" href="#KartRider.user.Player.matchRetired" title="정의 주소">¶</a></dt>
-<dd><p>리타이어 여부</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="KartRider.user.Player.matchTime">
-<code class="sig-name descname">matchTime</code><a class="headerlink" href="#KartRider.user.Player.matchTime" title="정의 주소">¶</a></dt>
-<dd><p>매치 진행 시간(int)</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="KartRider.user.Player.matchWin">
-<code class="sig-name descname">matchWin</code><a class="headerlink" href="#KartRider.user.Player.matchWin" title="정의 주소">¶</a></dt>
-<dd><p>매치 승리 여부</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="KartRider.user.Player.partsEngine">
-<code class="sig-name descname">partsEngine</code><a class="headerlink" href="#KartRider.user.Player.partsEngine" title="정의 주소">¶</a></dt>
-<dd><p>(str)</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="KartRider.user.Player.partsHandle">
-<code class="sig-name descname">partsHandle</code><a class="headerlink" href="#KartRider.user.Player.partsHandle" title="정의 주소">¶</a></dt>
-<dd><p>(str)</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="KartRider.user.Player.partsKit">
-<code class="sig-name descname">partsKit</code><a class="headerlink" href="#KartRider.user.Player.partsKit" title="정의 주소">¶</a></dt>
-<dd><p>(str)</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="KartRider.user.Player.partsWheel">
-<code class="sig-name descname">partsWheel</code><a class="headerlink" href="#KartRider.user.Player.partsWheel" title="정의 주소">¶</a></dt>
-<dd><p>(str)</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="KartRider.user.Player.pet">
-<em class="property">property </em><code class="sig-name descname">pet</code><a class="headerlink" href="#KartRider.user.Player.pet" title="정의 주소">¶</a></dt>
-<dd><p>펫 이름</p>
-<dl class="field-list simple">
-<dt class="field-odd">예외</dt>
-<dd class="field-odd"><p><strong>FileNotFoundError</strong> – 메타데이터 경로가 설정되지 않았을때</p>
-</dd>
-<dt class="field-even">반환 형식</dt>
-<dd class="field-even"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="KartRider.user.Player.petId">
-<code class="sig-name descname">petId</code><a class="headerlink" href="#KartRider.user.Player.petId" title="정의 주소">¶</a></dt>
-<dd><p>펫 ID(str)</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="KartRider.user.Player.rankinggrade2">
-<code class="sig-name descname">rankinggrade2</code><a class="headerlink" href="#KartRider.user.Player.rankinggrade2" title="정의 주소">¶</a></dt>
-<dd><p>리뉴얼 라이선스(str)</p>
-</dd></dl>
-
-</dd></dl>
-
 <dl class="class">
 <dt id="KartRider.user.User">
 <em class="property">class </em><code class="sig-prename descclassname">KartRider.user.</code><code class="sig-name descname">User</code><span class="sig-paren">(</span><em class="sig-param">api=None</em>, <em class="sig-param">name=None</em>, <em class="sig-param">accessid=None</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.user.User" title="정의 주소">¶</a></dt>
@@ -1033,8 +1033,8 @@ api를 사용합니다.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="KartRider.metadata.getCharacterId">
-<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getCharacterId</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getCharacterId" title="정의 주소">¶</a></dt>
+<dt id="KartRider.metadata.getcharacterid">
+<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getcharacterid</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getcharacterid" title="정의 주소">¶</a></dt>
 <dd><p>캐릭터 이름을 받아 ID를 반환합니다.</p>
 <dl class="field-list simple">
 <dt class="field-odd">매개변수</dt>
@@ -1050,8 +1050,8 @@ api를 사용합니다.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="KartRider.metadata.getCharacterName">
-<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getCharacterName</code><span class="sig-paren">(</span><em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getCharacterName" title="정의 주소">¶</a></dt>
+<dt id="KartRider.metadata.getcharactername">
+<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getcharactername</code><span class="sig-paren">(</span><em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getcharactername" title="정의 주소">¶</a></dt>
 <dd><p>캐릭터 ID를 받아 이름을 반환합니다.</p>
 <dl class="field-list simple">
 <dt class="field-odd">매개변수</dt>
@@ -1067,8 +1067,8 @@ api를 사용합니다.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="KartRider.metadata.getCharactersDict">
-<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getCharactersDict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getCharactersDict" title="정의 주소">¶</a></dt>
+<dt id="KartRider.metadata.getcharactersdict">
+<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getcharactersdict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getcharactersdict" title="정의 주소">¶</a></dt>
 <dd><p>캐릭터 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.</p>
 <dl class="field-list simple">
 <dt class="field-odd">반환 형식</dt>
@@ -1078,8 +1078,8 @@ api를 사용합니다.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="KartRider.metadata.getFlyingPetId">
-<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getFlyingPetId</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getFlyingPetId" title="정의 주소">¶</a></dt>
+<dt id="KartRider.metadata.getflyingpetid">
+<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getflyingpetid</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getflyingpetid" title="정의 주소">¶</a></dt>
 <dd><p>플라잉펫 이름을 받아 ID를 반환합니다.</p>
 <dl class="field-list simple">
 <dt class="field-odd">매개변수</dt>
@@ -1095,8 +1095,8 @@ api를 사용합니다.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="KartRider.metadata.getFlyingPetName">
-<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getFlyingPetName</code><span class="sig-paren">(</span><em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getFlyingPetName" title="정의 주소">¶</a></dt>
+<dt id="KartRider.metadata.getflyingpetname">
+<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getflyingpetname</code><span class="sig-paren">(</span><em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getflyingpetname" title="정의 주소">¶</a></dt>
 <dd><p>플라잉펫 ID를 받아 이름을 반환합니다.</p>
 <dl class="field-list simple">
 <dt class="field-odd">매개변수</dt>
@@ -1112,8 +1112,19 @@ api를 사용합니다.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="KartRider.metadata.getGameTypeId">
-<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getGameTypeId</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getGameTypeId" title="정의 주소">¶</a></dt>
+<dt id="KartRider.metadata.getflyingpetsdict">
+<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getflyingpetsdict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getflyingpetsdict" title="정의 주소">¶</a></dt>
+<dd><p>플라잉펫 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.</p>
+<dl class="field-list simple">
+<dt class="field-odd">반환 형식</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="KartRider.metadata.getgametypeid">
+<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getgametypeid</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getgametypeid" title="정의 주소">¶</a></dt>
 <dd><p>게임 타입 이름을 받아 ID를 반환합니다.</p>
 <dl class="field-list simple">
 <dt class="field-odd">매개변수</dt>
@@ -1129,8 +1140,8 @@ api를 사용합니다.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="KartRider.metadata.getGameTypeName">
-<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getGameTypeName</code><span class="sig-paren">(</span><em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getGameTypeName" title="정의 주소">¶</a></dt>
+<dt id="KartRider.metadata.getgametypename">
+<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getgametypename</code><span class="sig-paren">(</span><em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getgametypename" title="정의 주소">¶</a></dt>
 <dd><p>게임 타입 ID를 받아 이름을 반환합니다.</p>
 <dl class="field-list simple">
 <dt class="field-odd">매개변수</dt>
@@ -1146,8 +1157,19 @@ api를 사용합니다.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="KartRider.metadata.getImagePath">
-<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getImagePath</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">typename</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getImagePath" title="정의 주소">¶</a></dt>
+<dt id="KartRider.metadata.getgametypesdict">
+<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getgametypesdict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getgametypesdict" title="정의 주소">¶</a></dt>
+<dd><p>게임 유형 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.</p>
+<dl class="field-list simple">
+<dt class="field-odd">반환 형식</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="KartRider.metadata.getimagepath">
+<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getimagepath</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">typename</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getimagepath" title="정의 주소">¶</a></dt>
 <dd><p>메타데이터 이미지의 경로를 가져옵니다.</p>
 <dl class="field-list simple">
 <dt class="field-odd">매개변수</dt>
@@ -1166,8 +1188,8 @@ api를 사용합니다.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="KartRider.metadata.getKartId">
-<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getKartId</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getKartId" title="정의 주소">¶</a></dt>
+<dt id="KartRider.metadata.getkartid">
+<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getkartid</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getkartid" title="정의 주소">¶</a></dt>
 <dd><p>카트 이름을 받아 ID를 반환합니다.</p>
 <dl class="field-list simple">
 <dt class="field-odd">매개변수</dt>
@@ -1183,8 +1205,8 @@ api를 사용합니다.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="KartRider.metadata.getKartName">
-<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getKartName</code><span class="sig-paren">(</span><em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getKartName" title="정의 주소">¶</a></dt>
+<dt id="KartRider.metadata.getkartname">
+<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getkartname</code><span class="sig-paren">(</span><em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getkartname" title="정의 주소">¶</a></dt>
 <dd><p>카트 ID를 받아 이름을 반환합니다.</p>
 <dl class="field-list simple">
 <dt class="field-odd">매개변수</dt>
@@ -1200,8 +1222,8 @@ api를 사용합니다.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="KartRider.metadata.getKartsDict">
-<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getKartsDict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getKartsDict" title="정의 주소">¶</a></dt>
+<dt id="KartRider.metadata.getkartsdict">
+<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getkartsdict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getkartsdict" title="정의 주소">¶</a></dt>
 <dd><p>카트 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.</p>
 <dl class="field-list simple">
 <dt class="field-odd">반환 형식</dt>
@@ -1211,8 +1233,8 @@ api를 사용합니다.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="KartRider.metadata.getPetId">
-<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getPetId</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getPetId" title="정의 주소">¶</a></dt>
+<dt id="KartRider.metadata.getpetid">
+<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getpetid</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getpetid" title="정의 주소">¶</a></dt>
 <dd><p>펫 이름을 받아 ID를 반환합니다.</p>
 <dl class="field-list simple">
 <dt class="field-odd">매개변수</dt>
@@ -1228,8 +1250,8 @@ api를 사용합니다.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="KartRider.metadata.getPetName">
-<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getPetName</code><span class="sig-paren">(</span><em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getPetName" title="정의 주소">¶</a></dt>
+<dt id="KartRider.metadata.getpetname">
+<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getpetname</code><span class="sig-paren">(</span><em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getpetname" title="정의 주소">¶</a></dt>
 <dd><p>펫 ID를 받아 이름을 반환합니다.</p>
 <dl class="field-list simple">
 <dt class="field-odd">매개변수</dt>
@@ -1245,8 +1267,8 @@ api를 사용합니다.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="KartRider.metadata.getPetsDict">
-<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getPetsDict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getPetsDict" title="정의 주소">¶</a></dt>
+<dt id="KartRider.metadata.getpetsdict">
+<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getpetsdict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getpetsdict" title="정의 주소">¶</a></dt>
 <dd><p>펫 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.</p>
 <dl class="field-list simple">
 <dt class="field-odd">반환 형식</dt>
@@ -1256,8 +1278,8 @@ api를 사용합니다.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="KartRider.metadata.getTrackId">
-<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getTrackId</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getTrackId" title="정의 주소">¶</a></dt>
+<dt id="KartRider.metadata.gettrackid">
+<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">gettrackid</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.gettrackid" title="정의 주소">¶</a></dt>
 <dd><p>트랙 이름을 받아 ID를 반환합니다.</p>
 <dl class="field-list simple">
 <dt class="field-odd">매개변수</dt>
@@ -1273,8 +1295,8 @@ api를 사용합니다.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="KartRider.metadata.getTrackName">
-<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getTrackName</code><span class="sig-paren">(</span><em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getTrackName" title="정의 주소">¶</a></dt>
+<dt id="KartRider.metadata.gettrackname">
+<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">gettrackname</code><span class="sig-paren">(</span><em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.gettrackname" title="정의 주소">¶</a></dt>
 <dd><p>트랙 ID를 받아 이름을 반환합니다.</p>
 <dl class="field-list simple">
 <dt class="field-odd">매개변수</dt>
@@ -1290,31 +1312,9 @@ api를 사용합니다.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="KartRider.metadata.getTracksDict">
-<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getTracksDict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getTracksDict" title="정의 주소">¶</a></dt>
+<dt id="KartRider.metadata.gettracksdict">
+<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">gettracksdict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.gettracksdict" title="정의 주소">¶</a></dt>
 <dd><p>트랙 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.</p>
-<dl class="field-list simple">
-<dt class="field-odd">반환 형식</dt>
-<dd class="field-odd"><p>dict</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="function">
-<dt id="KartRider.metadata.getflyingPetsDict">
-<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getflyingPetsDict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getflyingPetsDict" title="정의 주소">¶</a></dt>
-<dd><p>플라잉펫 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.</p>
-<dl class="field-list simple">
-<dt class="field-odd">반환 형식</dt>
-<dd class="field-odd"><p>dict</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="function">
-<dt id="KartRider.metadata.getgameTypesDict">
-<code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">getgameTypesDict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.getgameTypesDict" title="정의 주소">¶</a></dt>
-<dd><p>게임 유형 id를 키로, 이름을 값으로 하는 딕셔너리를 가져옵니다.</p>
 <dl class="field-list simple">
 <dt class="field-odd">반환 형식</dt>
 <dd class="field-odd"><p>dict</p>
@@ -1326,8 +1326,7 @@ api를 사용합니다.</p>
 <dt id="KartRider.metadata.set_metadatapath">
 <code class="sig-prename descclassname">KartRider.metadata.</code><code class="sig-name descname">set_metadatapath</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#KartRider.metadata.set_metadatapath" title="정의 주소">¶</a></dt>
 <dd><p>메타데이터의 경로를 설정합니다.</p>
-<p>메타데이터는 python -m KartRider -d [경로] 로 다운로드 받을 수 있습니다.
-메타데이터 경로를 설정하지 않으면 여러 정보(카트, 트랙이름, 펫이름 등)의 실제 이름 확인이 불가능합니다.</p>
+<p>메타데이터 경로를 설정하지 않으면 여러 정보(카트, 트랙이름, 펫이름 등)의 실제 이름 확인이 불가능합니다.</p>
 <dl class="field-list simple">
 <dt class="field-odd">매개변수</dt>
 <dd class="field-odd"><p><strong>path</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – 메타데이터 폴더 경로 문자열</p>
